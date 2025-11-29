@@ -1,8 +1,12 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject charcterPrefab;
+    [SerializeField] GameObject Shaker;
+    [SerializeField] GameObject GoldTextCount;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,11 +25,13 @@ public class GameManager : MonoBehaviour
 
     public void ValidCocktail() 
     {
-        // Check if shaker is Valid
+        if (Shaker.GetComponent<Shaker>().CanBeServed() == false)
+            return;
+
         int price = 0;
-        // ShakerStats = Get ShakerStats
-        // price = GetComponent<Gambling>().CalculatePayment(ShakerStats);
-        GetComponent<GameData>().Gold += price;
+        Dictionary<IngredientType,int> ShakerStats = Shaker.GetComponent<Shaker>().GetCocktailStats();
+        price = (int)GetComponent<Gambling>().CalculatePayment(ShakerStats);
+        GameData.Gold += price;
     }
 
     // Update is called once per frame
@@ -34,5 +40,7 @@ public class GameManager : MonoBehaviour
         // TEMP
         if (Input.GetKeyDown(KeyCode.E))
             SpawnNewClient();
+
+        GoldTextCount.GetComponent<TextMeshPro>().SetText(GameData.Gold.ToString());
     }
 }

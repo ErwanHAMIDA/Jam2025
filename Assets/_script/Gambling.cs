@@ -5,7 +5,7 @@ using UnityEngine;
 public struct CharacterSpe
 {
     public int itemValue;
-    public Dictionary<string, int> idealStats;
+    public Dictionary<IngredientType, int> idealStats;
 };
 
 public class Gambling : MonoBehaviour
@@ -43,13 +43,13 @@ public class Gambling : MonoBehaviour
         Debug.Log(string.Format("Difficulty : {0} Rate : {1} Range : {2}", _difficulty, _rate, _range));
     }
 
-    float GetSuccessRate(Dictionary<string, int> givenStats)
+    float GetSuccessRate(Dictionary<IngredientType, int> givenStats)
     {
         float statsSize = givenStats.Count;
         float deltaAvg = 0;
         float deltaSum = 0;
 
-        foreach(KeyValuePair<string, int> pair in givenStats)
+        foreach(KeyValuePair<IngredientType, int> pair in givenStats)
         {
             deltaSum += Mathf.Abs(pair.Value - _characterSpe.idealStats[pair.Key]);
         }
@@ -59,7 +59,7 @@ public class Gambling : MonoBehaviour
 
         return deltaAvg < _range ? _rate : _rate / (deltaAvg / 4);
     }
-    public float CalculatePayment(Dictionary<string, int> givenStats)
+    public float CalculatePayment(Dictionary<IngredientType, int> givenStats)
     {
         float value = GetSuccessRate(givenStats);
         Debug.Log(string.Format("Payment : {0}, Value : {1}", _characterSpe.itemValue * value, value));

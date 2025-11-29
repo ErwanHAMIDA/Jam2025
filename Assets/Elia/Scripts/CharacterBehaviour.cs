@@ -39,7 +39,11 @@ public class CharacterBehaviour : MonoBehaviour
     CharacterSpe specifities;
     Animator characterAnimator;
 
+    int offerPrice;
+
     bool openOffer;
+
+    bool isWaiting;
     // favorite Ingredients
     // Hated Ingredients
 
@@ -55,7 +59,6 @@ public class CharacterBehaviour : MonoBehaviour
     {
         int w = Screen.width;
         transform.position = new Vector3( 0.0f - (w * 0.5f), 0.0f,0.0f);
-        characterAnimator = gameObject.GetComponent<Animator>();
         openOffer = true;
     }
 
@@ -79,13 +82,14 @@ public class CharacterBehaviour : MonoBehaviour
 
     public void AcceptOffer()
     {
-        // CONSUME GOLD
-        // WAIT FOR COCKTAIL
+        GameData.Gold -= offerPrice;
+        isWaiting = true;
+        transform.GetChild(1).gameObject.SetActive(false);
     }
 
     public void DeclineOffer()
     {
-        characterAnimator.SetBool("ServedNeutral", true);
+        gameObject.GetComponent<Animator>().SetBool("ServedNeutral", true);
         transform.GetChild(1).gameObject.SetActive(false);
     }
 
@@ -96,7 +100,7 @@ public class CharacterBehaviour : MonoBehaviour
     public void CharacterCreation(byte characterFlag)
     {
         int statsCount = (int)characterType.COUNT / 3;
-        specifities.idealStats = new Dictionary<string, int>(statsCount);
+        specifities.idealStats = new Dictionary<IngredientType, int>(statsCount);
 
         byte offset = 0;
 
@@ -126,10 +130,20 @@ public class CharacterBehaviour : MonoBehaviour
         Arrival();
     }
 
+    public void ReceiveShaker(int priceToPay)
+    {
+        if (priceToPay < offerPrice - (offerPrice * 0.25) )
+            gameObject.GetComponent<Animator>().SetBool("ServedPASKONTANT", true);
+        else if (priceToPay > offerPrice + (offerPrice * 0.25))
+            gameObject.GetComponent<Animator>().SetBool("ServedHappy", true);
+        else
+            gameObject.GetComponent<Animator>().SetBool("ServedNeutral", true);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (characterAnimator.GetCurrentAnimatorStateInfo(0).IsName("WaitAtBar") && openOffer)
+        if (gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("WaitAtBar") && openOffer)
         {
             openOffer = false;
             transform.GetChild(1).gameObject.SetActive(true);

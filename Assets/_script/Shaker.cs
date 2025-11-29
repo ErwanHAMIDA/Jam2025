@@ -7,6 +7,7 @@ public class Shaker : MonoBehaviour
 {
     private Dictionary<IngredientType, int> DrinkStats = new Dictionary<IngredientType, int>();
     private bool isFinished = false;
+    private bool canBeServed = false;
     private int shakeCount = 0;
     private float posY;
 
@@ -54,6 +55,11 @@ public class Shaker : MonoBehaviour
         return isFinished;
     }
 
+    public bool CanBeServed()
+    {
+        return canBeServed;
+    }
+
     public void Shake()
     {
         if (shakeCount % 2 == 0)
@@ -70,10 +76,20 @@ public class Shaker : MonoBehaviour
                 IncrementShakeCount();
             }
         }
+        if (shakeCount >= 6)
+        {
+            canBeServed = true;
+        }
     }
     private void IncrementShakeCount()
     {
         shakeCount++;
         posY = transform.position.y;
+    }
+
+    public Dictionary<IngredientType, int> GetCocktailStats()
+    {
+        // Check if shaker Ready
+        return DrinkStats;
     }
 }
