@@ -89,9 +89,9 @@ public class DragController : MonoBehaviour
         transform1.localScale = new Vector3(_x * 2f, _y * 2f, 0f);   
     }
 
-    private void Drag()
+    public void Drag()
     {
-        lastDragged.transform.position = new Vector3(_worldPosition.x - 1, _worldPosition.y + 1, 0f);
+        lastDragged.transform.position = new Vector3(_worldPosition.x, _worldPosition.y, 0f);
     }
 
     public static bool FinDrag = false;
