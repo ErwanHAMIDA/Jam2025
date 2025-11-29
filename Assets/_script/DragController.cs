@@ -8,9 +8,6 @@ public class DragController : MonoBehaviour
     private DragController _dragController;
     private Draggable _draggable;
     public Draggable lastDragged;
-    private Vector3 _basePosition;
-    private float _x;
-    private float _y;
     
     private void Start()
     {
@@ -73,8 +70,6 @@ public class DragController : MonoBehaviour
                     lastDragged = draggable;
                     var transform1 = lastDragged.transform;
                     var localScale = transform1.localScale;
-                    _x = localScale.x;
-                    _y = localScale.y;
                     InitDrag();
                 }
             }
@@ -83,15 +78,12 @@ public class DragController : MonoBehaviour
 
     private void InitDrag()
     {
-        var transform1 = lastDragged.transform;
-        _basePosition = transform1.position;
-        _isDragActive = true;
-        transform1.localScale = new Vector3(_x * 2f, _y * 2f, 0f);   
+        _isDragActive = true;  
     }
 
-    private void Drag()
+    public void Drag()
     {
-        lastDragged.transform.position = new Vector3(_worldPosition.x - 1, _worldPosition.y + 1, 0f);
+        lastDragged.transform.position = new Vector3(_worldPosition.x, _worldPosition.y, 0f);
     }
 
     public static bool FinDrag = false;
@@ -100,8 +92,6 @@ public class DragController : MonoBehaviour
     {
         _isDragActive = false;
         var transform1 = lastDragged.transform;
-        transform1.position = _basePosition;
-        transform1.localScale = new Vector3(_x, _y, 0f);
 
         if (!FinDrag) return;
         _draggable.enabled = false;
