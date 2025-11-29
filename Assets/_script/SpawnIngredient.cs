@@ -4,6 +4,7 @@ public class SpawnIngredient : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private Camera worldCamera;
+    [SerializeField] private GameObject spawnPoint;
     
     void Start()
     {
@@ -18,7 +19,7 @@ public class SpawnIngredient : MonoBehaviour
 
     public void InstantiateIngredient(GameObject ingredient)
     {
-        Vector3 worldPos = worldCamera.ScreenToWorldPoint(transform.position);
+        Vector3 worldPos = worldCamera.ScreenToWorldPoint(spawnPoint.transform.position);
 
         worldPos.z = 0f;
 
