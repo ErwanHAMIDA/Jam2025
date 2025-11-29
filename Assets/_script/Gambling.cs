@@ -18,24 +18,18 @@ public class Gambling : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        CharacterSpe characterSpe;
-        characterSpe.itemValue = 100;
-        characterSpe.idealStats = new Dictionary<string, int>();
-        characterSpe.idealStats["sweet"] = 50;
-        characterSpe.idealStats["temp"] = 50;
+        //CharacterSpe characterSpe;
+        //characterSpe.itemValue = 100;
+        //characterSpe.idealStats = new Dictionary<string, int>();
+        //characterSpe.idealStats["sweet"] = 50;
+        //characterSpe.idealStats["temp"] = 50;
 
-        Dictionary <string,int> resultCocktail = new Dictionary<string, int>();
-        resultCocktail["sweet"] = 64;
-        resultCocktail["temp"] = 36;
+        //Dictionary<string, int> resultCocktail = new Dictionary<string, int>();
+        //resultCocktail["sweet"] = 64;
+        //resultCocktail["temp"] = 36;
 
-        GenerateInformations(characterSpe);
-        CalculatePayment(resultCocktail);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //GenerateInformations(characterSpe);
+        //CalculatePayment(resultCocktail);
     }
 
     public void GenerateInformations(CharacterSpe specialisations)
@@ -63,13 +57,7 @@ public class Gambling : MonoBehaviour
         deltaAvg = deltaSum / statsSize;
         Debug.Log(string.Format("deltaSum : {0}\n deltaAvg : {1}", deltaSum, deltaAvg));
 
-        if (deltaAvg < _range)
-        {
-            return _rate;
-        }
-
-        Debug.Log("coucou");
-        return _rate / (deltaAvg / 4);
+        return deltaAvg < _range ? _rate : _rate / (deltaAvg / 4);
     }
     public float CalculatePayment(Dictionary<string, int> givenStats)
     {
