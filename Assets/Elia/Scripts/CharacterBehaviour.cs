@@ -123,6 +123,7 @@ public class CharacterBehaviour : MonoBehaviour
             }
             offset += 3;
         }
+        Arrival();
     }
 
     // Update is called once per frame

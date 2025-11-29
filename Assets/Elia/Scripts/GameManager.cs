@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // TEMP
         if (Input.GetKeyDown(KeyCode.E))
             SpawnNewClient();
     }
