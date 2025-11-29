@@ -25,11 +25,16 @@ public class Shop : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _buyableItems.Add(new Item("ice", "Get it fresh !", 10, sprites[0]));
-        _buyableItems.Add(new Item("mint", "breath freshener", 10, sprites[1]));
+        _buyableItems.Add(new Item("Ice", "Get it fresh !", 10, sprites[0]));
+        _buyableItems.Add(new Item("Mint", "breath freshener", 10, sprites[1]));
+        _buyableItems.Add(new Item("Pepper", "Hot sauce", 10, sprites[2]));
+        _buyableItems.Add(new Item("Orange", "Sweet as sugar", 10, sprites[3]));
+        _buyableItems.Add(new Item("Lemon", "Acidic juice", 10, sprites[4]));
+        _buyableItems.Add(new Item("Gasoline", "Give'em hell", 10, sprites[5]));
 
         CreateShop();
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -47,11 +52,12 @@ public class Shop : MonoBehaviour
             newButton.transform.Find("Price").GetComponent<TMP_Text>().text = item.price.ToString();
             newButton.transform.Find("Thumbnail").GetComponent<Image>().sprite = item.thumbnail;
 
-            //newButton.GetComponent<Button>().onClick.AddListener(() => Buy(item.price));
+            newButton.GetComponent<Button>().onClick.AddListener(delegate { Buy(item); });
         }
     }
-   public void Buy(int price)
+   public void Buy(Item item)
    {
-        //GameData.Gold -= price;
+        //GameData.Gold -= item.price;
+        Debug.Log("Buy :" + item.name);
    }
 }
