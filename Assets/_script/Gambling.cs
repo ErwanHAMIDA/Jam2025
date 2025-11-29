@@ -13,6 +13,7 @@ public class Gambling : MonoBehaviour
     float _rate;
     float _range;
     int _difficulty;
+    int _maxDifficulty;
     CharacterSpe _characterSpe;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,8 +25,8 @@ public class Gambling : MonoBehaviour
         characterSpe.idealStats["temp"] = 50;
 
         Dictionary <string,int> resultCocktail = new Dictionary<string, int>();
-        resultCocktail["sweet"] = 50;
-        resultCocktail["temp"] = 50;
+        resultCocktail["sweet"] = 64;
+        resultCocktail["temp"] = 36;
 
         GenerateInformations(characterSpe);
         CalculatePayment(resultCocktail);
@@ -39,10 +40,10 @@ public class Gambling : MonoBehaviour
 
     public void GenerateInformations(CharacterSpe specialisations)
     {
-        int maxDifficulty = 4;
-        _difficulty = UnityEngine.Random.Range(2, maxDifficulty + 1);
+        _maxDifficulty = 4;
+        _difficulty = 3;// UnityEngine.Random.Range(2, maxDifficulty + 1);
         _rate = _difficulty - 0.5f;
-        _range = (maxDifficulty - _rate) * 5;
+        _range = (_maxDifficulty - _rate) * 5;
         
         _characterSpe = specialisations;
         Debug.Log(string.Format("Difficulty : {0} Rate : {1} Range : {2}", _difficulty, _rate, _range));
@@ -56,7 +57,7 @@ public class Gambling : MonoBehaviour
 
         foreach(KeyValuePair<string, int> pair in givenStats)
         {
-            deltaSum += pair.Value - _characterSpe.idealStats[pair.Key];
+            deltaSum += Mathf.Abs(pair.Value - _characterSpe.idealStats[pair.Key]);
         }
 
         deltaAvg = deltaSum / statsSize;
@@ -67,12 +68,13 @@ public class Gambling : MonoBehaviour
             return _rate;
         }
 
-        return _rate * deltaAvg;
+        Debug.Log("coucou");
+        return _rate / (deltaAvg / 4);
     }
-
     public float CalculatePayment(Dictionary<string, int> givenStats)
     {
-        Debug.Log(string.Format("Payment : {0}", _characterSpe.itemValue * GetSuccessRate(givenStats)));
-        return _characterSpe.itemValue * GetSuccessRate(givenStats);
+        float value = GetSuccessRate(givenStats);
+        Debug.Log(string.Format("Payment : {0}, Value : {1}", _characterSpe.itemValue * value, value));
+        return _characterSpe.itemValue * value;
     }
 }
