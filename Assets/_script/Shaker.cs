@@ -35,6 +35,11 @@ public class Shaker : MonoBehaviour
         }
     }
 
+    public void AddFromTireuse()
+    {
+        AddIngredient(GetComponent<Ingredient>());
+    }
+
     public void ClearDrink()
     {
         DrinkStats[IngredientType.TEMP] = 50;
