@@ -5,8 +5,11 @@ public class IngredientInShaker : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
-        col.gameObject.SetActive(false);
+        if(GetComponent<Shaker>().GetDrinkState() == false)
+        {
+            GetComponent<Shaker>()?.AddIngredient(col.gameObject.GetComponent<Ingredient>());
+            col.gameObject.SetActive(false);
+        }
     }
 }
 
