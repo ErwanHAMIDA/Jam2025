@@ -96,5 +96,6 @@ public class DragController : MonoBehaviour
         if (!FinDrag) return;
         _draggable.enabled = false;
         _dragController.enabled = false;
+        //lastDragged = null;
     }
 }
