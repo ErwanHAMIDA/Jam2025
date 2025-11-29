@@ -35,9 +35,9 @@ public class Shaker : MonoBehaviour
         }
     }
 
-    public void AddFromTireuse()
+    public void AddFromTireuse(Ingredient toAdd)
     {
-        AddIngredient(GetComponent<Ingredient>());
+        AddIngredient(toAdd);
     }
 
     public void ClearDrink()
