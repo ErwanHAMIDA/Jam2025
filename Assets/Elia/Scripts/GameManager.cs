@@ -49,14 +49,6 @@ public class GameManager : MonoBehaviour
         GameData.Gold += price;
     }
 
-    void CheckWindowSize()
-    {
-        if (pixelHeight != Screen.height || pixelWidth != Screen.width) 
-        {
-            SceneInstantiation();
-        }
-    }
-
     // Update is called once per frame
     void Update()
     {
