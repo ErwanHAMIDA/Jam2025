@@ -36,12 +36,6 @@ enum characterType
 public class CharacterBehaviour : MonoBehaviour
 {
 
-    struct CharacterSpe
-    {
-        public float itemPrice;
-        public Dictionary<string, int> idealStats;
-    }
-
     CharacterSpe specifities;
     Animator characterAnimator;
 
@@ -95,6 +89,10 @@ public class CharacterBehaviour : MonoBehaviour
         transform.GetChild(1).gameObject.SetActive(false);
     }
 
+    public CharacterSpe GetCharactersSpecifications()
+    {
+        return specifities;
+    }
     public void CharacterCreation(byte characterFlag)
     {
         int statsCount = (int)characterType.COUNT / 3;
@@ -125,8 +123,6 @@ public class CharacterBehaviour : MonoBehaviour
             }
             offset += 3;
         }
-
-        Arrival();
     }
 
     // Update is called once per frame
