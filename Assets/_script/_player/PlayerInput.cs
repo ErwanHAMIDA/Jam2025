@@ -59,13 +59,13 @@ public class PlayerInput : MonoBehaviour
 
     private void Click_canceled(InputAction.CallbackContext obj)
     {
-        if (_dragController.IsDrag())
-            _dragController?.Drop();
+        //if (_dragController.IsDrag())
+        //    _dragController?.Drop();
     }
 
     private void Click_performed(InputAction.CallbackContext obj)
     {
-        _dragController?.SetMousePosition();
+        //_dragController?.SetMousePosition();
     }
 
     private void Click_started(InputAction.CallbackContext obj)

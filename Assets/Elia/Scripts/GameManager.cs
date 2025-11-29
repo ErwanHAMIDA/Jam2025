@@ -10,9 +10,9 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameObject newCharacter = Instantiate(charcterPrefab);
-        charcterPrefab.gameObject.SetActive(true);
-        newCharacter.GetComponent<CharacterBehaviour>().CharacterCreation(0b010001); // 0b010000 + 0b000001
+        //GameObject newCharacter = Instantiate(charcterPrefab);
+        //charcterPrefab.gameObject.SetActive(true);
+        //newCharacter.GetComponent<CharacterBehaviour>().CharacterCreation(0b010001); // 0b010000 + 0b000001
     }
 
     void SpawnNewClient()
@@ -38,9 +38,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // TEMP
-        if (Input.GetKeyDown(KeyCode.E))
-            SpawnNewClient();
+        //if (Input.GetKeyDown(KeyCode.E))
+        //    SpawnNewClient();
 
-        GoldTextCount.GetComponent<TextMeshPro>().SetText(GameData.Gold.ToString());
+        //GoldTextCount.GetComponent<TextMeshPro>().SetText(GameData.Gold.ToString());
     }
+
+    
 }
