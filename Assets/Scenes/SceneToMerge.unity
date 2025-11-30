@@ -5962,12 +5962,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803546820}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 164.04495, y: 47.191013, z: 0}
-  m_LocalScale: {x: 2.2471912, y: 2.2471912, z: 2.2471912}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 446, y: 125, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2093834892}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &803546822
 MonoBehaviour:
@@ -17227,7 +17227,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 803546821}
   - {fileID: 1252319460}
   - {fileID: 645155150}
   - {fileID: 2018157960}
@@ -17411,7 +17410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe211e0bf18ea4f46864560cb0636f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charcterPrefab: {fileID: 5453462248558739516, guid: 24aee626d07643e449019714383d5e8f, type: 3}
+  charcterPrefab: {fileID: 5453462248558739516, guid: b2d5be9aa4cfd5245922d8df980f6b18, type: 3}
   Shaker: {fileID: 1258774452}
   GoldTextCount: {fileID: 1134292987}
   PhysicEnvironmentHolder: {fileID: 9584820}
@@ -17812,6 +17811,7 @@ SceneRoots:
   - {fileID: 938158933}
   - {fileID: 916313711}
   - {fileID: 372954322}
+  - {fileID: 803546821}
   - {fileID: 2093834892}
   - {fileID: 9584821}
   - {fileID: 548312676}
