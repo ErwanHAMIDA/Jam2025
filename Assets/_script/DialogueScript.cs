@@ -52,7 +52,7 @@ public class DialogueScript : MonoBehaviour
         TextMesh.GetComponent<TextMeshProUGUI>().SetText(TextToDisplay);
         TextBox.GetComponent<Animator>().SetBool("Open", true);
         TextMesh.GetComponent<Animator>().SetBool("Open", true);
-        StartCoroutine(ShowDialogueSequence());
+        StartCoroutine(ShowDialogueSequence(1.5f));
     }
 
     public void SetDialogueContent(string content)
@@ -78,9 +78,9 @@ public class DialogueScript : MonoBehaviour
         }
     }
 
-    private IEnumerator ShowDialogueSequence()
+    private IEnumerator ShowDialogueSequence(float tempAnim = 0.0f)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.0f+tempAnim);
 
         TextBox.GetComponent<Animator>().SetBool("Close", true);
         TextMesh.GetComponent<Animator>().SetBool("Close", true);

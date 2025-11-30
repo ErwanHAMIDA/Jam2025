@@ -53,7 +53,7 @@ public class CharacterBehaviour : MonoBehaviour
 
     bool openOffer;
 
-    bool isWaiting;
+    bool isWaitingForDrink;
     // favorite Ingredients
     // Hated Ingredients
 
@@ -91,11 +91,16 @@ public class CharacterBehaviour : MonoBehaviour
         }
     }
 
+    public bool IsWaitingForDrink()
+    {
+        return isWaitingForDrink;
+    }
+
     public void AcceptOffer()
     {
         DialogueHandler.GetComponent<DialogueScript>().CloseDialogue();
         GameData.Gold -= offerPrice;
-        isWaiting = true;
+        isWaitingForDrink = true;
         transform.GetChild(1).gameObject.SetActive(false);
     }
 
@@ -162,7 +167,7 @@ public class CharacterBehaviour : MonoBehaviour
 
     public void ReceiveShaker(int priceToPay)
     {
-        isWaiting = false;
+        isWaitingForDrink = false;
         if (priceToPay < offerPrice - (offerPrice * 0.25))
         {
             gameObject.GetComponent<Animator>().SetBool("ServedPASKONTANT", true);

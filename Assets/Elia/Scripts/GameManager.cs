@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
 
     public void ValidCocktail() 
     {
+        if (currentCharacter.GetComponent<CharacterBehaviour>().IsWaitingForDrink() == false)
+            return;
+
         if (Shaker.GetComponent<Shaker>().CanBeServed() == false)
             return;
 
