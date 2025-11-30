@@ -38,8 +38,6 @@ public class GameManager : MonoBehaviour
     DragController _dragController;
 
     bool _isPauseMenu = false;
-    //public AudioClip PayAudio { get; }
-    //public AudioClip WalkAudio { get; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,7 +49,6 @@ public class GameManager : MonoBehaviour
         characterBehaviour.CharacterCreation(0b010001); // 0b010000 + 0b000001
         characterBehaviour.WalkAudio = walkAudio;
         characterBehaviour.PayAudio = payAudio;
-        //characterBehaviour.Sprites = _sprites;
         currentCharacter = newCharacter;
         GetComponent<Gambling>().GenerateInformations(newCharacter.GetComponent<CharacterBehaviour>().GetCharactersSpecifications());
         
@@ -114,6 +111,7 @@ public class GameManager : MonoBehaviour
     {
         _clickActionReference.action.Disable();
         _pauseActionReference.action.Disable();
+        SpawnNewClient();
     }
 
     public void SpawnNewClient()
@@ -131,6 +129,9 @@ public class GameManager : MonoBehaviour
 
     public void ValidCocktail() 
     {
+        if (currentCharacter.GetComponent<CharacterBehaviour>().IsWaitingForDrink() == false)
+            return;
+
         if (Shaker.GetComponent<Shaker>().CanBeServed() == false)
             return;
 
@@ -147,7 +148,7 @@ public class GameManager : MonoBehaviour
         currentCharacter.GetComponent<CharacterBehaviour>().ReceiveShaker(price);
         GameData.Gold += price;
 
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSeconds(3.0f);
         SpawnNewClient();
     }
 

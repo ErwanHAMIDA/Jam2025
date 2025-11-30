@@ -193,6 +193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valueInTemp: -24
-  valueInSweet: -50
-  valueInAlchool: -38
-  valueInSparkling: 50
+  valueInSweet: -38
+  valueInAlchool: -27
+  valueInSparkling: 20
