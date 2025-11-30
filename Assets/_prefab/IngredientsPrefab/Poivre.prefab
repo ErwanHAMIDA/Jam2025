@@ -192,3 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb574b78c1eb75e4e95199de8048e761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  valueInTemp: 25
+  valueInSweet: -15
+  valueInAlchool: 0
+  valueInSparkling: 10

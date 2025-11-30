@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5061476757216728168}
   - component: {fileID: 2648507751125330243}
   m_Layer: 5
-  m_Name: Tea
+  m_Name: Blueberry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,12 +84,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 3878416414871784333, guid: 43397a2a0382aa24c8cb6f3e6a68dd3e, type: 3}
+  m_Sprite: {fileID: -3517854847467642760, guid: 1bdfee7f355afa84995bf1950fd3587c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.64, y: 1.39}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -160,8 +160,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.44, y: 1.01}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1.64, y: 1.39}
+    newSize: {x: 1.64, y: 1.39}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb574b78c1eb75e4e95199de8048e761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueInTemp: 25
-  valueInSweet: 5
-  valueInAlchool: -20
-  valueInSparkling: -15
+  valueInTemp: -10
+  valueInSweet: 35
+  valueInAlchool: 0
+  valueInSparkling: 0
