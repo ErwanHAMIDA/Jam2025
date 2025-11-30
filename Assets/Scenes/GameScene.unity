@@ -3236,6 +3236,7 @@ MonoBehaviour:
   valueInSweet: -20
   valueInAlchool: 39
   valueInSparkling: 26
+  hitSound: {fileID: 0}
 --- !u!1 &412433385
 GameObject:
   m_ObjectHideFlags: 0
@@ -4046,6 +4047,7 @@ MonoBehaviour:
   valueInSweet: -23
   valueInAlchool: 15
   valueInSparkling: -10
+  hitSound: {fileID: 0}
 --- !u!1 &523540370
 GameObject:
   m_ObjectHideFlags: 0
@@ -5524,6 +5526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldCamera: {fileID: 1678318294}
   spawnPoint: {fileID: 803546820}
+  hitSound: {fileID: 0}
 --- !u!1 &808733029
 GameObject:
   m_ObjectHideFlags: 0
@@ -6696,6 +6699,7 @@ MonoBehaviour:
   OpenSprite: {fileID: 4078802072123479578, guid: 28beaa0ee961a3a4f9ced205d31f333a, type: 3}
   CloseSprite: {fileID: -7679144094554536194, guid: eece3c482a7f9944886754ecca50b440, type: 3}
   Shaker: {fileID: 1258774455}
+  pourAudio: {fileID: 0}
 --- !u!61 &948872132
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8786,6 +8790,7 @@ MonoBehaviour:
   - {fileID: -7962265800411467256, guid: 063b7044e05a0ec4e88c304f49b9543f, type: 3}
   - {fileID: -7245966700060494964, guid: 9c7eb929d7616be4387ff95d23c81d46, type: 3}
   - {fileID: 541068108005011974, guid: 75ab7e078dd70494ca3d4ad7c7c11509, type: 3}
+  clip: {fileID: 0}
 --- !u!114 &1252319462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9261,6 +9266,7 @@ MonoBehaviour:
   OpenSprite: {fileID: 4078802072123479578, guid: 28beaa0ee961a3a4f9ced205d31f333a, type: 3}
   CloseSprite: {fileID: -7679144094554536194, guid: eece3c482a7f9944886754ecca50b440, type: 3}
   Shaker: {fileID: 1258774455}
+  pourAudio: {fileID: 0}
 --- !u!61 &1289310205
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9894,6 +9900,7 @@ MonoBehaviour:
   valueInSweet: -11
   valueInAlchool: 10
   valueInSparkling: 7
+  hitSound: {fileID: 0}
 --- !u!1 &1419579192
 GameObject:
   m_ObjectHideFlags: 0
@@ -11610,6 +11617,7 @@ MonoBehaviour:
   OpenSprite: {fileID: 4078802072123479578, guid: 28beaa0ee961a3a4f9ced205d31f333a, type: 3}
   CloseSprite: {fileID: -7679144094554536194, guid: eece3c482a7f9944886754ecca50b440, type: 3}
   Shaker: {fileID: 1258774455}
+  pourAudio: {fileID: 0}
 --- !u!61 &1623585959
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15664,6 +15672,9 @@ MonoBehaviour:
   GoldTextCount: {fileID: 1134292987}
   PhysicEnvironmentHolder: {fileID: 9584820}
   WorldCam: {fileID: 1678318294}
+  bellRing: {fileID: 0}
+  walkAudio: {fileID: 0}
+  payAudio: {fileID: 0}
 --- !u!114 &2126696763
 MonoBehaviour:
   m_ObjectHideFlags: 0
