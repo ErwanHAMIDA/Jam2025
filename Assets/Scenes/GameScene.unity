@@ -2779,7 +2779,7 @@ MonoBehaviour:
         m_MethodName: InstantiateIngredient
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 590284431653865481, guid: 7731b4b9d8c8bad45b0b4a07dc80ea02, type: 3}
+          m_ObjectArgument: {fileID: 590284431653865481, guid: 5a410adb5011a8b4d902b85584b3466f, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4190,6 +4190,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 552563425}
+  - component: {fileID: 552563427}
+  - component: {fileID: 552563426}
   m_Layer: 5
   m_Name: GameObject
   m_TagString: Untagged
@@ -4214,8 +4216,46 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 17, y: 17}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &552563426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552563424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 8452703584861095095, guid: 59df50355fa75b444acd1e163900b6ee, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &552563427
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552563424}
+  m_CullTransparentMesh: 1
 --- !u!1 &561599213
 GameObject:
   m_ObjectHideFlags: 0

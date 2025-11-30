@@ -18,11 +18,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameData.Gold = 100;
-        GameObject newCharacter = Instantiate(charcterPrefab);
-        charcterPrefab.gameObject.SetActive(true);
-        newCharacter.GetComponent<CharacterBehaviour>().CharacterCreation(0b010001); // 0b010000 + 0b000001
-        currentCharacter = newCharacter;
-        GetComponent<Gambling>().GenerateInformations(newCharacter.GetComponent<CharacterBehaviour>().GetCharactersSpecifications());
+        SpawnNewClient();
     }
 
     public void SpawnNewClient()
@@ -51,7 +47,7 @@ public class GameManager : MonoBehaviour
         currentCharacter.GetComponent<CharacterBehaviour>().ReceiveShaker(price);
         GameData.Gold += price;
 
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSeconds(3.0f);
         SpawnNewClient();
     }
 

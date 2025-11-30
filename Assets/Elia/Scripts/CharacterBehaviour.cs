@@ -44,7 +44,7 @@ enum characterType
 
 public class CharacterBehaviour : MonoBehaviour
 {
-
+    GameObject DialogueHandler;
     CharacterSpe specifities;
     Animator characterAnimator;
     GameManager gm;
@@ -71,6 +71,7 @@ public class CharacterBehaviour : MonoBehaviour
         transform.position = new Vector3( 0.0f - (w * 0.5f), 0.0f,0.0f);
         openOffer = true;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        DialogueHandler = transform.GetChild(0).gameObject;
     }
 
     void Arrival()
@@ -92,6 +93,7 @@ public class CharacterBehaviour : MonoBehaviour
 
     public void AcceptOffer()
     {
+        DialogueHandler.GetComponent<DialogueScript>().CloseDialogue();
         GameData.Gold -= offerPrice;
         isWaiting = true;
         transform.GetChild(1).gameObject.SetActive(false);
@@ -99,14 +101,17 @@ public class CharacterBehaviour : MonoBehaviour
 
     public void DeclineOffer()
     {
+        DialogueHandler.GetComponent<DialogueScript>().CloseDialogue();
         StartCoroutine(LeaveAfterDecline());
     }
 
     IEnumerator LeaveAfterDecline()
     {
+        DialogueHandler.GetComponent<DialogueScript>().SetDialogueContent("Bon bah à la prochaine");
+        DialogueHandler.GetComponent<DialogueScript>().StartTempDialogue();
         gameObject.GetComponent<Animator>().SetBool("ServedNeutral", true);
         transform.GetChild(1).gameObject.SetActive(false);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3.5f);
         gm.SpawnNewClient();
     }
 
@@ -158,12 +163,22 @@ public class CharacterBehaviour : MonoBehaviour
     public void ReceiveShaker(int priceToPay)
     {
         isWaiting = false;
-        if (priceToPay < offerPrice - (offerPrice * 0.25) )
+        if (priceToPay < offerPrice - (offerPrice * 0.25))
+        {
             gameObject.GetComponent<Animator>().SetBool("ServedPASKONTANT", true);
+            DialogueHandler.GetComponent<DialogueScript>().SetDialogueContentWithState(DialogueOption.PasContant);
+        }
         else if (priceToPay > offerPrice + (offerPrice * 0.25))
+        {
             gameObject.GetComponent<Animator>().SetBool("ServedHappy", true);
+            DialogueHandler.GetComponent<DialogueScript>().SetDialogueContentWithState(DialogueOption.Content);
+        }
         else
+        {
             gameObject.GetComponent<Animator>().SetBool("ServedNeutral", true);
+            DialogueHandler.GetComponent<DialogueScript>().SetDialogueContentWithState(DialogueOption.MidTier);
+        }
+        DialogueHandler.GetComponent<DialogueScript>().StartTempDialogue();
     }
 
     // Update is called once per frame
@@ -173,6 +188,9 @@ public class CharacterBehaviour : MonoBehaviour
         {
             openOffer = false;
             transform.GetChild(1).gameObject.SetActive(true);
+            DialogueHandler.SetActive(true);
+            DialogueHandler.GetComponent<DialogueScript>().SetDialogueContent("BONSOIR");
+            DialogueHandler.GetComponent<DialogueScript>().StartDialogue();
         }
         
     }
