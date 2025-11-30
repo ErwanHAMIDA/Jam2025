@@ -58,7 +58,6 @@ public class Shaker : MonoBehaviour
 
     public void FinishDrink()
     {
-        GetComponent<Draggable>().enabled = true;
         isFinished = true;
     }
 
@@ -103,5 +102,14 @@ public class Shaker : MonoBehaviour
     {
         // Check if shaker Ready
         return DrinkStats;
+    }
+
+    public void ResetShaker()
+    {
+        shakeCount = 0;
+        ClearDrink();
+        canBeServed = false;
+        isFinished = false;
+        posY = transform.position.y;
     }
 }

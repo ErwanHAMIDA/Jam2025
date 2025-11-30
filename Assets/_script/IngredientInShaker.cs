@@ -11,7 +11,7 @@ public class IngredientInShaker : MonoBehaviour
             {
                 if (col.GetComponent<Shaker>().GetDrinkState() == false)
                 {
-                    GetComponent<Shaker>()?.AddIngredient(gameObject.GetComponent<Ingredient>());
+                    col.GetComponent<Shaker>()?.AddIngredient(gameObject.GetComponent<Ingredient>());
                     gameObject.SetActive(false);
                 }
             }

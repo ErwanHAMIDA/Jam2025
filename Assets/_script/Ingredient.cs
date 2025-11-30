@@ -41,6 +41,11 @@ public enum IngredientType
 
 public class Ingredient : MonoBehaviour
 {
+    [SerializeField][Range(-50, 50)] int valueInTemp;
+    [SerializeField][Range(-50, 50)] int valueInSweet;
+    [SerializeField][Range(-50, 50)] int valueInAlchool;
+    [SerializeField][Range(-50, 50)] int valueInSparkling;
+
     Dictionary<IngredientType,int> stats = new Dictionary<IngredientType,int>();
 
     public void InitIngredient(Dictionary<IngredientType, int> givenStats)

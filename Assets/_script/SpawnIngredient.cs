@@ -23,6 +23,8 @@ public class SpawnIngredient : MonoBehaviour
 
         worldPos.z = 0f;
 
-        Instantiate(ingredient, worldPos, Quaternion.identity);
+        GameObject ingre = Instantiate(ingredient, worldPos, Quaternion.identity);
+        ingre.tag = "Ingredient";
+        ingre.AddComponent<IngredientInShaker>();
     }
 }
