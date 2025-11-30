@@ -41,6 +41,15 @@ enum characterType
     COUNT = 12,
 }
 
+enum WhoIsIt
+{
+    SUCCUBE,
+    CHIEN,
+    PHOQUE,
+    JOKER
+    
+}
+
 
 public class CharacterBehaviour : MonoBehaviour
 {
@@ -48,6 +57,8 @@ public class CharacterBehaviour : MonoBehaviour
     CharacterSpe specifities;
     Animator characterAnimator;
     GameManager gm;
+
+    WhoIsIt _currentWhoIsIt;
 
     int offerPrice;
 
@@ -71,6 +82,8 @@ public class CharacterBehaviour : MonoBehaviour
         transform.position = new Vector3( 0.0f - (w * 0.5f), 0.0f,0.0f);
         openOffer = true;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        
     }
 
     void Arrival()
@@ -116,6 +129,8 @@ public class CharacterBehaviour : MonoBehaviour
     }
     public void CharacterCreation(byte characterFlag)
     {
+        _currentWhoIsIt = (WhoIsIt)UnityEngine.Random.Range(2, 4);
+
         offerPrice = UnityEngine.Random.Range(20, 500);
         int statsCount = (int)characterType.COUNT / 3;
         specifities.idealStats = new Dictionary<IngredientType, int>(statsCount) 
@@ -128,30 +143,140 @@ public class CharacterBehaviour : MonoBehaviour
 
         byte offset = 0;
 
-        for (int i = 0; i < statsCount; i++)
+        //here
+        if (_currentWhoIsIt == WhoIsIt.CHIEN)
         {
-            byte f1 = (byte)Mathf.Pow(2, offset);
-            byte f2 = (byte)Mathf.Pow(2, offset + 1);
-            byte f3 = (byte)Mathf.Pow(2, offset + 2);
-            byte f4 = (byte)Mathf.Pow(2, offset + 3);
-            if (Flags.HAS_FLAG(characterFlag, f1))
+            Debug.Log("Chien");
+            for (int i = 0; i < statsCount; i++)
             {
-                specifities.idealStats[(IngredientType)i] =  UnityEngine.Random.Range(-50,-16); // -50 -> -15
+                byte f1 = (byte)Mathf.Pow(2, offset);
+                byte f2 = (byte)Mathf.Pow(2, offset + 1);
+                byte f3 = (byte)Mathf.Pow(2, offset + 2);
+                byte f4 = (byte)Mathf.Pow(2, offset + 3);
+                if (Flags.HAS_FLAG(characterFlag, f1))
+                {
+                    //temperature
+                    specifities.idealStats[(IngredientType)i] = 4; // -50 -> 50
+                }
+                else if (Flags.HAS_FLAG(characterFlag, f2))
+                {
+                    //Sweet
+                    specifities.idealStats[(IngredientType)i] = 30; // -16 -> 14
+                }
+                else if (Flags.HAS_FLAG(characterFlag, f3))
+                {
+                    //alcohol
+                    specifities.idealStats[(IngredientType)i] = -15; // 15 -> 100
+                }
+                else if (Flags.HAS_FLAG(characterFlag, f4))
+                {
+                    //Sparkling
+
+                    specifities.idealStats[(IngredientType)i] = 28; // 15 -> 100
+                }
+                offset += 4;
             }
-            else if (Flags.HAS_FLAG(characterFlag, f2))
-            {
-                specifities.idealStats[(IngredientType)i] = UnityEngine.Random.Range(-16, 15); // -16 -> 14
-            }
-            else if (Flags.HAS_FLAG(characterFlag, f3))
-            {
-                specifities.idealStats[(IngredientType)i] = UnityEngine.Random.Range(15, 51); // 15 -> 100
-            }
-            else if (Flags.HAS_FLAG(characterFlag, f4))
-            {
-                specifities.idealStats[(IngredientType)i] = UnityEngine.Random.Range(-20, 45); // 15 -> 100
-            }
-            offset += 4;
         }
+        else if (_currentWhoIsIt == WhoIsIt.SUCCUBE)
+        {
+            Debug.Log("Suc");
+            for (int i = 0; i < statsCount; i++)
+            {
+                byte f1 = (byte)Mathf.Pow(2, offset);
+                byte f2 = (byte)Mathf.Pow(2, offset + 1);
+                byte f3 = (byte)Mathf.Pow(2, offset + 2);
+                byte f4 = (byte)Mathf.Pow(2, offset + 3);
+                if (Flags.HAS_FLAG(characterFlag, f1))
+                {
+                    //temperature
+                    specifities.idealStats[(IngredientType)i] = 50; // -50 -> 50
+                }
+                else if (Flags.HAS_FLAG(characterFlag, f2))
+                {
+                    //Sweet
+                    specifities.idealStats[(IngredientType)i] = 30; // -16 -> 14
+                }
+                else if (Flags.HAS_FLAG(characterFlag, f3))
+                {
+                    //alcohol
+                    specifities.idealStats[(IngredientType)i] = 40; // 15 -> 100
+                }
+                else if (Flags.HAS_FLAG(characterFlag, f4))
+                {
+                    //Sparkling
+
+                    specifities.idealStats[(IngredientType)i] = -45; // 15 -> 100
+                }
+                offset += 4;
+            }
+        }
+        else if (_currentWhoIsIt == WhoIsIt.JOKER)
+        {
+            Debug.Log("JOKER");
+            for (int i = 0; i < statsCount; i++)
+            {
+                byte f1 = (byte)Mathf.Pow(2, offset);
+                byte f2 = (byte)Mathf.Pow(2, offset + 1);
+                byte f3 = (byte)Mathf.Pow(2, offset + 2);
+                byte f4 = (byte)Mathf.Pow(2, offset + 3);
+                if (Flags.HAS_FLAG(characterFlag, f1))
+                {
+                    //temperature
+                    specifities.idealStats[(IngredientType)i] = -30; // -50 -> 50
+                }
+                else if (Flags.HAS_FLAG(characterFlag, f2))
+                {
+                    //Sweet
+                    specifities.idealStats[(IngredientType)i] = 5; // -16 -> 14
+                }
+                else if (Flags.HAS_FLAG(characterFlag, f3))
+                {
+                    //alcohol
+                    specifities.idealStats[(IngredientType)i] = -40; // 15 -> 100
+                }
+                else if (Flags.HAS_FLAG(characterFlag, f4))
+                {
+                    //Sparkling
+
+                    specifities.idealStats[(IngredientType)i] = -10; // 15 -> 100
+                }
+                offset += 4;
+            }
+        }
+        else if (_currentWhoIsIt == WhoIsIt.PHOQUE)
+        {
+            Debug.Log("PHOQUE");
+            for (int i = 0; i < statsCount; i++)
+            {
+                byte f1 = (byte)Mathf.Pow(2, offset);
+                byte f2 = (byte)Mathf.Pow(2, offset + 1);
+                byte f3 = (byte)Mathf.Pow(2, offset + 2);
+                byte f4 = (byte)Mathf.Pow(2, offset + 3);
+                if (Flags.HAS_FLAG(characterFlag, f1))
+                {
+                    //temperature
+                    specifities.idealStats[(IngredientType)i] = -42; // -50 -> 50
+                }
+                else if (Flags.HAS_FLAG(characterFlag, f2))
+                {
+                    //Sweet
+                    specifities.idealStats[(IngredientType)i] = 25; // -16 -> 14
+                }
+                else if (Flags.HAS_FLAG(characterFlag, f3))
+                {
+                    //alcohol
+                    specifities.idealStats[(IngredientType)i] = -30; // 15 -> 100
+                }
+                else if (Flags.HAS_FLAG(characterFlag, f4))
+                {
+                    //Sparkling
+
+                    specifities.idealStats[(IngredientType)i] = 40; // 15 -> 100
+                }
+                offset += 4;
+            }
+        }
+        
         Arrival();
     }
 
