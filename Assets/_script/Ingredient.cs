@@ -45,7 +45,9 @@ public class Ingredient : MonoBehaviour
     [SerializeField][Range(-50, 50)] int valueInSweet;
     [SerializeField][Range(-50, 50)] int valueInAlchool;
     [SerializeField][Range(-50, 50)] int valueInSparkling;
+    [SerializeField] AudioClip hitSound;
 
+    public AudioClip HitSound { set; get; }  
     Dictionary<IngredientType,int> stats = new Dictionary<IngredientType,int>();
 
     public void InitIngredient(Dictionary<IngredientType, int> givenStats)
@@ -69,6 +71,10 @@ public class Ingredient : MonoBehaviour
     void Update()
     {
 
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        SFXManager.Instance.PlaySFXClip(hitSound, transform, 1);
     }
 
     public Dictionary<IngredientType, int> GetIngredientStats()

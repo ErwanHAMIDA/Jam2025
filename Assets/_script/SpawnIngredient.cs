@@ -5,6 +5,7 @@ public class SpawnIngredient : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private Camera worldCamera;
     [SerializeField] private GameObject spawnPoint;
+    [SerializeField] private AudioClip hitSound;
     
     void Start()
     {
@@ -26,5 +27,6 @@ public class SpawnIngredient : MonoBehaviour
         GameObject ingre = Instantiate(ingredient, worldPos, Quaternion.identity);
         ingre.tag = "Ingredient";
         ingre.AddComponent<IngredientInShaker>();
+        ingre.GetComponent<Ingredient>().HitSound = hitSound;
     }
 }

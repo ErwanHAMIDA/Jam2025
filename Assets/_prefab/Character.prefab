@@ -830,6 +830,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9799ba3939caba44b9305e4b3b41a89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  payAudio: {fileID: 8300000, guid: 62fa1e1f4c800a34785281101997c32e, type: 3}
+  walkAudio: {fileID: 8300000, guid: 08b809f443217d441b9486604ff56aae, type: 3}
 --- !u!1 &6549796494245757886
 GameObject:
   m_ObjectHideFlags: 0

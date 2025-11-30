@@ -22,6 +22,7 @@ public class Shop : MonoBehaviour
     [SerializeField] GameObject _buttonPrefab;
     [SerializeField] GameObject _prefabParent;
     [SerializeField] List<Sprite> sprites;
+    [SerializeField] AudioClip clip;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -58,6 +59,7 @@ public class Shop : MonoBehaviour
 
     public void Toggle()
     {
+        SFXManager.Instance.PlaySFXClip(clip, transform, 1);
         gameObject.SetActive(!gameObject.activeSelf);
     }
    public void Buy(Item item)

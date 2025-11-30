@@ -9,6 +9,7 @@ public class BeerTapBehaviour : MonoBehaviour
     [SerializeField] Sprite OpenSprite;
     [SerializeField] Sprite CloseSprite;
     [SerializeField] Shaker Shaker;
+    [SerializeField] AudioClip pourAudio;
 
     bool isCollidingWithShaker = false;
     bool isOpen;
@@ -37,7 +38,10 @@ public class BeerTapBehaviour : MonoBehaviour
             Close();
         }
         else
+        {
+            SFXManager.Instance.PlaySFXClip(pourAudio, transform, 1);
             Open();
+        }
     }
 
     public void TryAddIngredient(Ingredient ingredient)
