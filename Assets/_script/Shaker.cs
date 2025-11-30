@@ -5,7 +5,15 @@ using UnityEngine.UIElements;
 
 public class Shaker : MonoBehaviour
 {
-    private Dictionary<IngredientType, int> DrinkStats = new Dictionary<IngredientType, int>();
+    [SerializeField] GameObject StatsDisplayer;
+
+    private Dictionary<IngredientType, int> DrinkStats = new Dictionary<IngredientType, int>(4)
+    {
+        {IngredientType.TEMP, 50},
+        {IngredientType.SWEET, 50},
+        {IngredientType.ALCOHOL, 50},
+        { IngredientType.SPARKLING, 50 }
+    };
     private bool isFinished = false;
     private bool canBeServed = false;
     private int shakeCount = 0;
@@ -14,11 +22,8 @@ public class Shaker : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        DrinkStats.Add(IngredientType.TEMP, 50);
-        DrinkStats.Add(IngredientType.SWEET, 50);
-        DrinkStats.Add(IngredientType.ALCOHOL, 50);
-        DrinkStats.Add(IngredientType.SPARKLING, 50);
         posY = transform.position.y;
+        Debug.Log(DrinkStats);
     }
 
     // Update is called once per frame
@@ -28,12 +33,13 @@ public class Shaker : MonoBehaviour
     }
     public void AddIngredient(Ingredient toAdd)
     {
-        List<IngredientStats> tmp = toAdd.GetIngredientStats();
+        Dictionary<IngredientType,int> tmp = toAdd.GetIngredientStats();
 
-        foreach (IngredientStats IngStats in tmp)
+        foreach (KeyValuePair<IngredientType,int> it in tmp)
         {
-            DrinkStats[IngStats.GetIngredientType()] += IngStats.GetValue();
+            DrinkStats[it.Key] += it.Value;
         }
+        StatsDisplayer.GetComponent<StatsDisplay>().AddStats(tmp);
     }
 
     public void ClearDrink()

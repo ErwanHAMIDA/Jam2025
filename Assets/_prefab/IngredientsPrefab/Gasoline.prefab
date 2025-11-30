@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5221231321539903757}
   - component: {fileID: 7106611853869815935}
   - component: {fileID: 5061476757216728168}
-  - component: {fileID: 2648507751125330243}
+  - component: {fileID: 3525733883310075474}
   m_Layer: 5
-  m_Name: Ingredient 1
+  m_Name: Gasoline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,8 +84,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.39030913, g: 0.15475246, b: 0.7132075, a: 1}
+  m_Sprite: {fileID: 541068108005011974, guid: 75ab7e078dd70494ca3d4ad7c7c11509, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -160,7 +160,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.57, y: 1.01}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cececfb1f4a1c845ae2122aa52a13a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2648507751125330243
+--- !u!114 &3525733883310075474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,3 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb574b78c1eb75e4e95199de8048e761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  valueInTemp: 20
+  valueInSweet: -41
+  valueInAlchool: 26
+  valueInSparkling: -11

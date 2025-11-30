@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5061476757216728168}
   - component: {fileID: 2648507751125330243}
   m_Layer: 5
-  m_Name: Ingredient 3
+  m_Name: IceCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,8 +84,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.81886786, g: 0.39398354, b: 0.54543036, a: 1}
+  m_Sprite: {fileID: -4528831821242572118, guid: 000d9ddd37dcb2d4d94f6b619c106878, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -160,7 +160,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.68, y: 1.32}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -192,3 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb574b78c1eb75e4e95199de8048e761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  valueInTemp: -33
+  valueInSweet: 23
+  valueInAlchool: -25
+  valueInSparkling: 13

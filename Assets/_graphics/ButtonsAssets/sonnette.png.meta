@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: c1b114ab1c92af74399164b5bb7f1edf
+guid: 0863bd5dd9fdd0343a2867de29171165
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -85044977489749273
-    second: Bouton vide noir et blanc_0
+      213: 5238821905205844816
+    second: sonnette_0
+  - first:
+      213: -8804802351888789516
+    second: sonnette_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +116,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bouton vide noir et blanc_0
+      name: sonnette_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 17
-        width: 156
-        height: 152
+        x: 3
+        y: 3
+        width: 36
+        height: 27
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 34, y: 36, z: 29, w: 31}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7eadac62b0cd1def0800000000000000
-      internalID: -85044977489749273
+      spriteID: 05b545d24c804b840800000000000000
+      internalID: 5238821905205844816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sonnette_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 0
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ff052a29ee0fc580800000000000000
+      internalID: -8804802351888789516
       vertices: []
       indices: 
       edges: []
@@ -138,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: cacfcfa9b31c2284c949ac10cb00dedb
+    spriteID: fcdf6e655f884c643aa2d00c1936c7fa
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bouton vide noir et blanc_0: -85044977489749273
+      sonnette_0: 5238821905205844816
+      sonnette_1: -8804802351888789516
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -29,7 +30,15 @@ enum characterType
     PAS_SWEET           = 0b010000,
     NEUTRAL_SWEET       = 0b100000,
 
-    COUNT = 6,
+    SANS_ACOOL = 0b001000,
+    ALCOOL = 0b010000,
+    NEUTRAL_ALCOOL= 0b100000,
+
+    PLAT = 0b001000,
+    SPARKLING= 0b010000,
+    NEUTRAL_SPARKLING = 0b100000,
+
+    COUNT = 12,
 }
 
 
@@ -38,6 +47,7 @@ public class CharacterBehaviour : MonoBehaviour
 
     CharacterSpe specifities;
     Animator characterAnimator;
+    GameManager gm;
 
     int offerPrice;
 
@@ -60,12 +70,12 @@ public class CharacterBehaviour : MonoBehaviour
         int w = Screen.width;
         transform.position = new Vector3( 0.0f - (w * 0.5f), 0.0f,0.0f);
         openOffer = true;
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Arrival()
     {
         int r = UnityEngine.Random.Range( 0, 3 );
-        Debug.Log("Arriving");
         switch (r)
         {
             case 0:
@@ -89,8 +99,15 @@ public class CharacterBehaviour : MonoBehaviour
 
     public void DeclineOffer()
     {
+        StartCoroutine(LeaveAfterDecline());
+    }
+
+    IEnumerator LeaveAfterDecline()
+    {
         gameObject.GetComponent<Animator>().SetBool("ServedNeutral", true);
         transform.GetChild(1).gameObject.SetActive(false);
+        yield return new WaitForSeconds(1.5f);
+        gm.SpawnNewClient();
     }
 
     public CharacterSpe GetCharactersSpecifications()
@@ -99,8 +116,15 @@ public class CharacterBehaviour : MonoBehaviour
     }
     public void CharacterCreation(byte characterFlag)
     {
+        offerPrice = UnityEngine.Random.Range(20, 500);
         int statsCount = (int)characterType.COUNT / 3;
-        specifities.idealStats = new Dictionary<IngredientType, int>(statsCount);
+        specifities.idealStats = new Dictionary<IngredientType, int>(statsCount) 
+        { 
+            { IngredientType.ALCOHOL, 0 },
+            { IngredientType.SPARKLING, 0 },
+            { IngredientType.SWEET, 0 },
+            { IngredientType.TEMP, 0 },
+        };
 
         byte offset = 0;
 
@@ -109,29 +133,31 @@ public class CharacterBehaviour : MonoBehaviour
             byte f1 = (byte)Mathf.Pow(2, offset);
             byte f2 = (byte)Mathf.Pow(2, offset + 1);
             byte f3 = (byte)Mathf.Pow(2, offset + 2);
-            Debug.Log("Flags : " + f1 + ", " + f2 + ", " + f3);
+            byte f4 = (byte)Mathf.Pow(2, offset + 3);
             if (Flags.HAS_FLAG(characterFlag, f1))
             {
-                UnityEngine.Random.Range(0,36); // 0 -> 35
-                Debug.Log("Type with offset " + offset + " is 1");
+                specifities.idealStats[(IngredientType)i] =  UnityEngine.Random.Range(-50,-16); // -50 -> -15
             }
             else if (Flags.HAS_FLAG(characterFlag, f2))
             {
-                UnityEngine.Random.Range(36, 65); // 36 -> 64
-                Debug.Log("Type with offset " + offset + " is 2");
+                specifities.idealStats[(IngredientType)i] = UnityEngine.Random.Range(-16, 15); // -16 -> 14
             }
             else if (Flags.HAS_FLAG(characterFlag, f3))
             {
-                UnityEngine.Random.Range(65, 101); // 65 -> 100
-                Debug.Log("Type with offset " + offset + " is 3");
+                specifities.idealStats[(IngredientType)i] = UnityEngine.Random.Range(15, 51); // 15 -> 100
             }
-            offset += 3;
+            else if (Flags.HAS_FLAG(characterFlag, f4))
+            {
+                specifities.idealStats[(IngredientType)i] = UnityEngine.Random.Range(-20, 45); // 15 -> 100
+            }
+            offset += 4;
         }
         Arrival();
     }
 
     public void ReceiveShaker(int priceToPay)
     {
+        isWaiting = false;
         if (priceToPay < offerPrice - (offerPrice * 0.25) )
             gameObject.GetComponent<Animator>().SetBool("ServedPASKONTANT", true);
         else if (priceToPay > offerPrice + (offerPrice * 0.25))
@@ -147,7 +173,6 @@ public class CharacterBehaviour : MonoBehaviour
         {
             openOffer = false;
             transform.GetChild(1).gameObject.SetActive(true);
-            Debug.Log("WaitAtBar");
         }
         
     }

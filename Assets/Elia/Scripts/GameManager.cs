@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -10,31 +12,25 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject GoldTextCount;
     [SerializeField] GameObject PhysicEnvironmentHolder;
     [SerializeField] Camera WorldCam;
-
-    float pixelWidth;
-    float pixelHeight;
-
-    float sceneWidth;
-    float sceneHeight;
-
-    float originWidth = 15.36705f;
-    float originHeight = 10.0f;
-
+    GameObject currentCharacter;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameData.Gold = 100;
         GameObject newCharacter = Instantiate(charcterPrefab);
         charcterPrefab.gameObject.SetActive(true);
         newCharacter.GetComponent<CharacterBehaviour>().CharacterCreation(0b010001); // 0b010000 + 0b000001
-
+        currentCharacter = newCharacter;
+        GetComponent<Gambling>().GenerateInformations(newCharacter.GetComponent<CharacterBehaviour>().GetCharactersSpecifications());
     }
 
-    void SpawnNewClient()
+    public void SpawnNewClient()
     {
         GameObject newCharacter = Instantiate(charcterPrefab);
         charcterPrefab.gameObject.SetActive(true);
         newCharacter.GetComponent<CharacterBehaviour>().CharacterCreation(0b010001); // 0b010000 + 0b000001
+        currentCharacter = newCharacter;
         GetComponent<Gambling>().GenerateInformations(newCharacter.GetComponent<CharacterBehaviour>().GetCharactersSpecifications());
     }
 
@@ -43,10 +39,20 @@ public class GameManager : MonoBehaviour
         if (Shaker.GetComponent<Shaker>().CanBeServed() == false)
             return;
 
+        StartCoroutine(ManageCocktail());
+
+    }
+
+    IEnumerator ManageCocktail()
+    {
         int price = 0;
-        Dictionary<IngredientType,int> ShakerStats = Shaker.GetComponent<Shaker>().GetCocktailStats();
+        Dictionary<IngredientType, int> ShakerStats = Shaker.GetComponent<Shaker>().GetCocktailStats();
         price = (int)GetComponent<Gambling>().CalculatePayment(ShakerStats);
+        currentCharacter.GetComponent<CharacterBehaviour>().ReceiveShaker(price);
         GameData.Gold += price;
+
+        yield return new WaitForSeconds(1.25f);
+        SpawnNewClient();
     }
 
     // Update is called once per frame
@@ -56,7 +62,7 @@ public class GameManager : MonoBehaviour
         //if (Input.GetKeyDown(KeyCode.E))
         //    SpawnNewClient();
 
-        //GoldTextCount.GetComponent<TextMeshPro>().SetText(GameData.Gold.ToString());
+        GoldTextCount.GetComponent<TMP_Text>().text = GameData.Gold.ToString();
     }
 
     

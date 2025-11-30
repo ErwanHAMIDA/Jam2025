@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c1b114ab1c92af74399164b5bb7f1edf
+guid: edaf20551292ae042b6523213d140c79
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -85044977489749273
-    second: Bouton vide noir et blanc_0
+      213: 2591610255017268997
+    second: Inventaire ouvert_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bouton vide noir et blanc_0
+      name: Inventaire ouvert_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 17
-        width: 156
-        height: 152
+        x: 0
+        y: 0
+        width: 564
+        height: 800
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 34, y: 36, z: 29, w: 31}
+      border: {x: 87, y: 78, z: 73, w: 79}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7eadac62b0cd1def0800000000000000
-      internalID: -85044977489749273
+      spriteID: 5075096cbcf37f320800000000000000
+      internalID: 2591610255017268997
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: cacfcfa9b31c2284c949ac10cb00dedb
+    spriteID: 5f061b7420092414093a626c055022a0
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bouton vide noir et blanc_0: -85044977489749273
+      Inventaire ouvert_0: 2591610255017268997
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

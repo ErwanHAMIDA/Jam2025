@@ -12,38 +12,17 @@ public enum IngredientType
      COUNT
 }
 
-public struct IngredientStats
-{
-    IngredientType type;
-    int value;
-
-    public int GetValue()
-    {
-        return value;
-    }
-
-    public IngredientType GetIngredientType()
-    {
-        return type;
-    }
-
-    public void SetIngredientType (IngredientType type)
-    {
-        this.type = type;
-    }
-
-    public void SetValue (int value)
-    {
-        this.value = value;
-    }
-}
-
 
 public class Ingredient : MonoBehaviour
 {
-    List<IngredientStats> stats;
+    Dictionary<IngredientType, int> stats;
+    
+    [SerializeField] [Range(-50,50)] int valueInTemp;
+    [SerializeField] [Range(-50,50)] int valueInSweet;
+    [SerializeField] [Range(-50,50)] int valueInAlchool;
+    [SerializeField] [Range(-50,50)] int valueInSparkling;
 
-    public void InitIngredient(List<IngredientStats> givenStats)
+    public void InitIngredient(Dictionary<IngredientType, int> givenStats)
     {
         stats = givenStats;
     }
@@ -51,24 +30,13 @@ public class Ingredient : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        List<IngredientStats> test = new List<IngredientStats>();
-        test.Add(new IngredientStats());
-        test[0].SetIngredientType(IngredientType.TEMP);
-        test[0].SetValue(2);
-
-        test.Add(new IngredientStats());
-        test[1].SetIngredientType(IngredientType.SWEET);
-        test[1].SetValue(-4);
-
-        test.Add(new IngredientStats());
-        test[2].SetIngredientType(IngredientType.ALCOHOL);
-        test[2].SetValue(1);
-
-        test.Add(new IngredientStats());
-        test[3].SetIngredientType(IngredientType.SPARKLING);
-        test[3].SetValue(0);
-
-        InitIngredient(test);
+        stats = new Dictionary<IngredientType, int>
+        {
+            {IngredientType.TEMP, valueInTemp },
+            {IngredientType.SWEET, valueInSweet },
+            {IngredientType.ALCOHOL, valueInAlchool },
+            {IngredientType.SPARKLING, valueInSparkling },
+        };
     }
 
     // Update is called once per frame
@@ -77,7 +45,7 @@ public class Ingredient : MonoBehaviour
 
     }
 
-    public List<IngredientStats> GetIngredientStats()
+    public Dictionary<IngredientType, int> GetIngredientStats()
     {
         return stats;
     }
