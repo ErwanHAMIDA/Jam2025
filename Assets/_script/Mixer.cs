@@ -19,7 +19,7 @@ public class Mixer : MonoBehaviour
         {
             GetComponent<Draggable>().enabled = true;
             //GetComponentInChildren<Image>().enabled = true;
-            GetComponentInChildren<Image>().color = Color.red;
+            GetComponentInChildren<SpriteRenderer>().color = Color.red;
         }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created

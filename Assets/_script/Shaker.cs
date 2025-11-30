@@ -7,6 +7,8 @@ using UnityEngine.UIElements;
 public class Shaker : MonoBehaviour
 {
     [SerializeField] GameObject StatsDisplayer;
+    [SerializeField] Sprite openedSprite;
+    [SerializeField] Sprite closedSprite;
 
     private Dictionary<IngredientType, int> DrinkStats = new Dictionary<IngredientType, int>(4)
     {
@@ -31,6 +33,10 @@ public class Shaker : MonoBehaviour
     void Update()
     {
         Shake();
+        if (isFinished)
+            GetComponent<SpriteRenderer>().sprite = closedSprite;
+        else
+            GetComponent<SpriteRenderer>().sprite = openedSprite;
     }
     public void AddIngredient(Ingredient toAdd)
     {

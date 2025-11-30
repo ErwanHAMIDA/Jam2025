@@ -28,12 +28,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject GoldTextCount;
     [SerializeField] GameObject PhysicEnvironmentHolder;
     [SerializeField] Camera WorldCam;
+    [SerializeField] AudioClip bellRing;
+    [SerializeField] AudioClip walkAudio;
+    [SerializeField] AudioClip payAudio;
     GameObject currentCharacter;
 
     PlayerBehavior _behavior;
     DragController _dragController;
 
     bool _isPauseMenu = false;
+    //public AudioClip PayAudio { get; }
+    //public AudioClip WalkAudio { get; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,7 +46,10 @@ public class GameManager : MonoBehaviour
         GameData.Gold = 100;
         GameObject newCharacter = Instantiate(charcterPrefab);
         charcterPrefab.gameObject.SetActive(true);
-        newCharacter.GetComponent<CharacterBehaviour>().CharacterCreation(0b010001); // 0b010000 + 0b000001
+        CharacterBehaviour characterBehaviour = newCharacter.GetComponent<CharacterBehaviour>();
+        characterBehaviour.CharacterCreation(0b010001); // 0b010000 + 0b000001
+        characterBehaviour.WalkAudio = walkAudio;
+        characterBehaviour.PayAudio = payAudio;
         currentCharacter = newCharacter;
         GetComponent<Gambling>().GenerateInformations(newCharacter.GetComponent<CharacterBehaviour>().GetCharactersSpecifications());
         
@@ -110,7 +118,10 @@ public class GameManager : MonoBehaviour
     {
         GameObject newCharacter = Instantiate(charcterPrefab);
         charcterPrefab.gameObject.SetActive(true);
-        newCharacter.GetComponent<CharacterBehaviour>().CharacterCreation(0b010001); // 0b010000 + 0b000001
+        CharacterBehaviour characterBehaviour = newCharacter.GetComponent<CharacterBehaviour>();
+        characterBehaviour.CharacterCreation(0b010001); // 0b010000 + 0b000001
+        characterBehaviour.WalkAudio = walkAudio;
+        characterBehaviour.PayAudio = payAudio;
         currentCharacter = newCharacter;
         GetComponent<Gambling>().GenerateInformations(newCharacter.GetComponent<CharacterBehaviour>().GetCharactersSpecifications());
     }
@@ -120,6 +131,7 @@ public class GameManager : MonoBehaviour
         if (Shaker.GetComponent<Shaker>().CanBeServed() == false)
             return;
 
+        SFXManager.Instance.PlaySFXClip(bellRing, transform, 1);
         StartCoroutine(ManageCocktail());
 
     }

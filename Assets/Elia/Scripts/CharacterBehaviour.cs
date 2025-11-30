@@ -53,7 +53,8 @@ enum WhoIsIt
 
 public class CharacterBehaviour : MonoBehaviour
 {
-
+    AudioClip payAudio;
+    AudioClip walkAudio;
     CharacterSpe specifities;
     Animator characterAnimator;
     GameManager gm;
@@ -65,6 +66,9 @@ public class CharacterBehaviour : MonoBehaviour
     bool openOffer;
 
     bool isWaiting;
+    
+    public AudioClip PayAudio { set { payAudio = value; } }    
+    public AudioClip WalkAudio { set { payAudio = value; } }    
     // favorite Ingredients
     // Hated Ingredients
 
@@ -88,6 +92,8 @@ public class CharacterBehaviour : MonoBehaviour
 
     void Arrival()
     {
+        //SFXManager.Instance.PlaySFXClip(gm.WalkAudio, transform, 1);
+
         int r = UnityEngine.Random.Range( 0, 3 );
         switch (r)
         {
@@ -105,6 +111,7 @@ public class CharacterBehaviour : MonoBehaviour
 
     public void AcceptOffer()
     {
+        //SFXManager.Instance.PlaySFXClip(gm.PayAudio, transform.parent.transform, 1);
         GameData.Gold -= offerPrice;
         isWaiting = true;
         transform.GetChild(1).gameObject.SetActive(false);
@@ -117,6 +124,8 @@ public class CharacterBehaviour : MonoBehaviour
 
     IEnumerator LeaveAfterDecline()
     {
+        //SFXManager.Instance.PlaySFXClip(gm.WalkAudio, transform, 1);
+
         gameObject.GetComponent<Animator>().SetBool("ServedNeutral", true);
         transform.GetChild(1).gameObject.SetActive(false);
         yield return new WaitForSeconds(1.5f);
