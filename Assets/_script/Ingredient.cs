@@ -12,38 +12,38 @@ public enum IngredientType
      COUNT
 }
 
-public struct IngredientStats
-{
-    IngredientType type;
-    int value;
+//public struct IngredientStats
+//{
+//    IngredientType type;
+//    int value;
 
-    public int GetValue()
-    {
-        return value;
-    }
+//    public int GetValue()
+//    {
+//        return value;
+//    }
 
-    public IngredientType GetIngredientType()
-    {
-        return type;
-    }
+//    public IngredientType GetIngredientType()
+//    {
+//        return type;
+//    }
 
-    public void SetIngredientType (IngredientType type)
-    {
-        this.type = type;
-    }
+//    public void SetIngredientType (IngredientType type)
+//    {
+//        this.type = type;
+//    }
 
-    public void SetValue (int value)
-    {
-        this.value = value;
-    }
-}
+//    public void SetValue (int value)
+//    {
+//        this.value = value;
+//    }
+//}
 
 
 public class Ingredient : MonoBehaviour
 {
-    List<IngredientStats> stats;
+    Dictionary<IngredientType,int> stats = new Dictionary<IngredientType,int>();
 
-    public void InitIngredient(List<IngredientStats> givenStats)
+    public void InitIngredient(Dictionary<IngredientType, int> givenStats)
     {
         stats = givenStats;
     }
@@ -51,23 +51,13 @@ public class Ingredient : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        List<IngredientStats> test = new List<IngredientStats>();
-        test.Add(new IngredientStats());
-        test[0].SetIngredientType(IngredientType.TEMP);
-        test[0].SetValue(2);
-
-        test.Add(new IngredientStats());
-        test[1].SetIngredientType(IngredientType.SWEET);
-        test[1].SetValue(-4);
-
-        test.Add(new IngredientStats());
-        test[2].SetIngredientType(IngredientType.ALCOHOL);
-        test[2].SetValue(1);
-
-        test.Add(new IngredientStats());
-        test[3].SetIngredientType(IngredientType.SPARKLING);
-        test[3].SetValue(0);
-
+        Dictionary<IngredientType, int> test = new Dictionary<IngredientType, int>
+        {
+            { IngredientType.TEMP, 5 },
+            { IngredientType.SWEET, 10 },
+            { IngredientType.ALCOHOL, -4 },
+            { IngredientType.SPARKLING, 0 }
+        };
         InitIngredient(test);
     }
 
@@ -77,7 +67,7 @@ public class Ingredient : MonoBehaviour
 
     }
 
-    public List<IngredientStats> GetIngredientStats()
+    public Dictionary<IngredientType, int> GetIngredientStats()
     {
         return stats;
     }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -27,11 +28,11 @@ public class Shaker : MonoBehaviour
     }
     public void AddIngredient(Ingredient toAdd)
     {
-        List<IngredientStats> tmp = toAdd.GetIngredientStats();
+        Dictionary<IngredientType, int> tmp = toAdd.GetIngredientStats();
 
-        foreach (IngredientStats IngStats in tmp)
+        foreach (KeyValuePair<IngredientType, int> iterator in tmp)
         {
-            DrinkStats[IngStats.GetIngredientType()] += IngStats.GetValue();
+            DrinkStats[iterator.Key] += iterator.Value;
         }
     }
 
@@ -50,7 +51,7 @@ public class Shaker : MonoBehaviour
 
     public void FinishDrink()
     {
-        GetComponent<Draggable>().gameObject.SetActive(true);
+        GetComponent<Draggable>().enabled = true;
         isFinished = true;
     }
 
