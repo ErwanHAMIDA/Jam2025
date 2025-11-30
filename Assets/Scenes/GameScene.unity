@@ -4818,11 +4818,11 @@ RectTransform:
   - {fileID: 755309493}
   m_Father: {fileID: 954056653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -56.411472}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &745902949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6708,7 +6708,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 954056653}
-  - component: {fileID: 954056654}
   m_Layer: 0
   m_Name: Layout
   m_TagString: Untagged
@@ -6728,10 +6727,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1302168712}
-  - {fileID: 745902948}
-  - {fileID: 1717000896}
   - {fileID: 2000002514}
+  - {fileID: 1717000896}
+  - {fileID: 745902948}
+  - {fileID: 1302168712}
   m_Father: {fileID: 1935251001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6739,32 +6738,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 24.007942}
   m_SizeDelta: {x: 160, y: 162.01588}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &954056654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954056652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 3.63
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1 &974679490
 GameObject:
   m_ObjectHideFlags: 0
@@ -7651,18 +7624,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _menuScene: MenuScene
   _allButtons:
-  - {fileID: 0}
-  - {fileID: 2000002511}
+  - {fileID: 745902949}
   - {fileID: 1717000893}
-  - {fileID: 1302168711}
+  - {fileID: 2000002511}
   _buttonPositions:
-  - {x: 200, y: 0, z: 0}
-  - {x: 0, y: -90, z: 0}
-  - {x: -200, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  _backButton: {fileID: 0}
+  - {x: 0, y: -50, z: 0}
+  - {x: 0, y: -100, z: 0}
+  - {x: 0, y: -150, z: 0}
+  _backButton: {fileID: 2118574701}
   _playButton: {fileID: 1302168708}
-  _delay: 1
+  _pauseMenu: {fileID: 1935250997}
+  _delay: 0.01
   _transitionDuration: 1
 --- !u!4 &1083960915
 Transform:
@@ -9642,11 +9614,11 @@ RectTransform:
   - {fileID: 2065507863}
   m_Father: {fileID: 954056653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -15}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1361649916
 GameObject:
   m_ObjectHideFlags: 0
@@ -12602,11 +12574,11 @@ RectTransform:
   - {fileID: 2137745020}
   m_Father: {fileID: 954056653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -97.822945}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1720234823
 GameObject:
   m_ObjectHideFlags: 0
@@ -15092,11 +15064,11 @@ RectTransform:
   - {fileID: 441504990}
   m_Father: {fileID: 954056653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -139.2344}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &2014558701
 GameObject:
   m_ObjectHideFlags: 0
@@ -16157,6 +16129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe211e0bf18ea4f46864560cb0636f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputActions: {fileID: -944628639613478452, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
+  _clickActionReference: {fileID: 2194193358114801714, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
+  _pauseActionReference: {fileID: -6665811581691778710, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
+  _pauseMenuManager: {fileID: 1083960914}
   charcterPrefab: {fileID: 5453462248558739516, guid: b2d5be9aa4cfd5245922d8df980f6b18, type: 3}
   Shaker: {fileID: 1258774452}
   GoldTextCount: {fileID: 1134292987}
