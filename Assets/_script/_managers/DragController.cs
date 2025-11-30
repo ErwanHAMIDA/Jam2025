@@ -8,7 +8,10 @@ public class DragController : MonoBehaviour
     private DragController _dragController;
     private Draggable _draggable;
     public Draggable lastDragged;
-    
+    private Vector3 _basePosition;
+    private float _x;
+    private float _y;
+
     private void Start()
     {
         _dragController = FindObjectOfType<DragController>();
@@ -65,11 +68,13 @@ public class DragController : MonoBehaviour
             if (hit.collider != null)
             {
                 Draggable draggable = hit.collider.GetComponent<Draggable>();
-                if (draggable != null)
+                if (draggable != null && draggable.isActiveAndEnabled)
                 {
                     lastDragged = draggable;
                     var transform1 = lastDragged.transform;
                     var localScale = transform1.localScale;
+                    _x = localScale.x;
+                    _y = localScale.y;
                     InitDrag();
                 }
             }
@@ -78,7 +83,9 @@ public class DragController : MonoBehaviour
 
     private void InitDrag()
     {
-        _isDragActive = true;  
+        var transform1 = lastDragged.transform;
+        _basePosition = transform1.position;
+        _isDragActive = true;
     }
 
     public void Drag()
@@ -91,8 +98,12 @@ public class DragController : MonoBehaviour
     private void Drop()
     {
         _isDragActive = false;
-        var transform1 = lastDragged.transform;
-
+        if (lastDragged.CompareTag("Mixeur")) {
+            var transform1 = lastDragged.transform;
+            transform1.position = _basePosition;
+            transform1.localScale = new Vector3(_x, _y, 0f);
+        }
+        
         if (!FinDrag) return;
         _draggable.enabled = false;
         _dragController.enabled = false;

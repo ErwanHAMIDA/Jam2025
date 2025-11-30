@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -42,6 +43,11 @@ public class Shaker : MonoBehaviour
         StatsDisplayer.GetComponent<StatsDisplay>().AddStats(tmp);
     }
 
+    public void AddFromTireuse(Ingredient toAdd)
+    {
+        AddIngredient(toAdd);
+    }
+
     public void ClearDrink()
     {
         DrinkStats[IngredientType.TEMP] = 50;
@@ -52,7 +58,7 @@ public class Shaker : MonoBehaviour
 
     public void FinishDrink()
     {
-        GetComponent<Draggable>().gameObject.SetActive(true);
+        GetComponent<Draggable>().enabled = true;
         isFinished = true;
     }
 

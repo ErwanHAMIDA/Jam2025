@@ -12,15 +12,36 @@ public enum IngredientType
      COUNT
 }
 
+//public struct IngredientStats
+//{
+//    IngredientType type;
+//    int value;
+
+//    public int GetValue()
+//    {
+//        return value;
+//    }
+
+//    public IngredientType GetIngredientType()
+//    {
+//        return type;
+//    }
+
+//    public void SetIngredientType (IngredientType type)
+//    {
+//        this.type = type;
+//    }
+
+//    public void SetValue (int value)
+//    {
+//        this.value = value;
+//    }
+//}
+
 
 public class Ingredient : MonoBehaviour
 {
-    Dictionary<IngredientType, int> stats;
-    
-    [SerializeField] [Range(-50,50)] int valueInTemp;
-    [SerializeField] [Range(-50,50)] int valueInSweet;
-    [SerializeField] [Range(-50,50)] int valueInAlchool;
-    [SerializeField] [Range(-50,50)] int valueInSparkling;
+    Dictionary<IngredientType,int> stats = new Dictionary<IngredientType,int>();
 
     public void InitIngredient(Dictionary<IngredientType, int> givenStats)
     {

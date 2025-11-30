@@ -5,10 +5,31 @@ public class IngredientInShaker : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(GetComponent<Shaker>().GetDrinkState() == false)
+        if (gameObject.CompareTag("Ingredient"))
         {
-            GetComponent<Shaker>()?.AddIngredient(col.gameObject.GetComponent<Ingredient>());
-            col.gameObject.SetActive(false);
+            if (col.gameObject.CompareTag("Shaker"))
+            {
+                if (col.GetComponent<Shaker>().GetDrinkState() == false)
+                {
+                    GetComponent<Shaker>()?.AddIngredient(gameObject.GetComponent<Ingredient>());
+                    gameObject.SetActive(false);
+                }
+            }
+            else if (col.gameObject.CompareTag("Mixeur"))
+            {
+                if (col.GetComponent<Mixer>().GetMixerState() == false)
+                {
+                    col.GetComponent<Mixer>()?.PutIngredient(gameObject.GetComponent<Ingredient>());
+                    gameObject.SetActive(false);
+                }
+            }
+        } else if (gameObject.CompareTag("Shaker"))
+        {
+            if(col.gameObject.CompareTag("Mixeur"))
+            {
+                GetComponent<Shaker>()?.AddIngredient(col.GetComponent<Mixer>().GetIngredient());
+                col.GetComponent<Mixer>().EmptyMixer();
+            }
         }
     }
 }
