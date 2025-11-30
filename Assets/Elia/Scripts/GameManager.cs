@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioClip bellRing;
     [SerializeField] AudioClip walkAudio;
     [SerializeField] AudioClip payAudio;
+
     GameObject currentCharacter;
 
     PlayerBehavior _behavior;
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
         characterBehaviour.CharacterCreation(0b010001); // 0b010000 + 0b000001
         characterBehaviour.WalkAudio = walkAudio;
         characterBehaviour.PayAudio = payAudio;
+        //characterBehaviour.Sprites = _sprites;
         currentCharacter = newCharacter;
         GetComponent<Gambling>().GenerateInformations(newCharacter.GetComponent<CharacterBehaviour>().GetCharactersSpecifications());
         
@@ -122,6 +124,7 @@ public class GameManager : MonoBehaviour
         characterBehaviour.CharacterCreation(0b010001); // 0b010000 + 0b000001
         characterBehaviour.WalkAudio = walkAudio;
         characterBehaviour.PayAudio = payAudio;
+        //characterBehaviour.Sprites = _sprites;
         currentCharacter = newCharacter;
         GetComponent<Gambling>().GenerateInformations(newCharacter.GetComponent<CharacterBehaviour>().GetCharactersSpecifications());
     }

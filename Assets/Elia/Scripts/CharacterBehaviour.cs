@@ -61,6 +61,7 @@ public class CharacterBehaviour : MonoBehaviour
 
     WhoIsIt _currentWhoIsIt;
 
+    [SerializeField] List<Sprite> _sprites;
     int offerPrice;
 
     bool openOffer;
@@ -138,7 +139,7 @@ public class CharacterBehaviour : MonoBehaviour
     }
     public void CharacterCreation(byte characterFlag)
     {
-        _currentWhoIsIt = (WhoIsIt)UnityEngine.Random.Range(2, 4);
+        _currentWhoIsIt = (WhoIsIt)UnityEngine.Random.Range(0, 4);
 
         offerPrice = UnityEngine.Random.Range(20, 500);
         int statsCount = (int)characterType.COUNT / 3;
@@ -184,6 +185,9 @@ public class CharacterBehaviour : MonoBehaviour
                     specifities.idealStats[(IngredientType)i] = 28; // 15 -> 100
                 }
                 offset += 4;
+
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _sprites[(int)_currentWhoIsIt];
+
             }
         }
         else if (_currentWhoIsIt == WhoIsIt.SUCCUBE)
@@ -217,6 +221,10 @@ public class CharacterBehaviour : MonoBehaviour
                     specifities.idealStats[(IngredientType)i] = -45; // 15 -> 100
                 }
                 offset += 4;
+                int val = (int)_currentWhoIsIt;
+
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _sprites[(int)_currentWhoIsIt];
+
             }
         }
         else if (_currentWhoIsIt == WhoIsIt.JOKER)
@@ -250,6 +258,9 @@ public class CharacterBehaviour : MonoBehaviour
                     specifities.idealStats[(IngredientType)i] = -10; // 15 -> 100
                 }
                 offset += 4;
+                int val = (int)_currentWhoIsIt;
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _sprites[(int)_currentWhoIsIt];
+
             }
         }
         else if (_currentWhoIsIt == WhoIsIt.PHOQUE)
@@ -283,6 +294,9 @@ public class CharacterBehaviour : MonoBehaviour
                     specifities.idealStats[(IngredientType)i] = 40; // 15 -> 100
                 }
                 offset += 4;
+                int val = (int)_currentWhoIsIt;
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _sprites[(int)_currentWhoIsIt];
+
             }
         }
         
