@@ -11,7 +11,6 @@ public class PauseMenuManager : MonoBehaviour
 
     [SerializeField] private Button[] _allButtons;
     [SerializeField] private Vector3[] _buttonPositions;
-    [SerializeField] private GameObject _backButton;
     [SerializeField] private GameObject _playButton;
     [SerializeField] private GameObject _pauseMenu;
 
