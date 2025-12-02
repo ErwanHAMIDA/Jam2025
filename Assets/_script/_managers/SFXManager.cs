@@ -57,6 +57,7 @@ public class SFXManager : MonoBehaviour
     private void OnDisable()
     {
         InputSystemUIInputModule ui = FindObjectOfType<InputSystemUIInputModule>();
+
         ui.move.action.performed -= OnNavigate;
         ui.submit.action.performed -= OnSubmit;
     }

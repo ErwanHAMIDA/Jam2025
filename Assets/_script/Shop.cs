@@ -21,9 +21,11 @@ public class Shop : MonoBehaviour
     List<Item> _buyableItems = new List<Item>();
     [SerializeField] GameObject _buttonPrefab;
     [SerializeField] GameObject _prefabParent;
+    [SerializeField] GameObject _shopMenu;
+    [SerializeField] GameObject _shopBackground;
     [SerializeField] List<Sprite> sprites;
     [SerializeField] AudioClip clip;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         _buyableItems.Add(new Item("Ice", "Get it fresh !", 10, sprites[0]));
@@ -59,8 +61,8 @@ public class Shop : MonoBehaviour
 
     public void Toggle()
     {
-        SFXManager.Instance.PlaySFXClip(clip, transform, 1);
-        gameObject.SetActive(!gameObject.activeSelf);
+        _shopMenu.SetActive(!_shopMenu.activeSelf);
+        _shopBackground.SetActive(!_shopBackground.activeSelf);
     }
    public void Buy(Item item)
    {

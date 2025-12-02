@@ -32,8 +32,6 @@ public class PauseMenuManager : MonoBehaviour
             EnablePauseMenu();
         else
             DisablePauseMenu();
-
-        Debug.Log(_isOnPause);
     }
 
     private void EnablePauseMenu()

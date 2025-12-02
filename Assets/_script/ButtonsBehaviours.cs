@@ -1,17 +1,21 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonsBehaviours : MonoBehaviour
 {
     [SerializeField] Sprite OpenSprite;
     [SerializeField] Sprite CloseSprite;
+    [SerializeField] Image _shopImage;
 
-    public void Open()
-    {
-        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = OpenSprite;
-    }
+    private bool _isUseShop = false;
 
-    public void Close()
+    public void UseShopButton()
     {
-        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = CloseSprite;
+        _isUseShop = !_isUseShop;
+
+        if (_isUseShop)
+            _shopImage.sprite = OpenSprite;
+        else
+            _shopImage.sprite = CloseSprite;
     }
 }
