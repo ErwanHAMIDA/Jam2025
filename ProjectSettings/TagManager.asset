@@ -7,6 +7,11 @@ TagManager:
   - Mixeur
   - Shaker
   - Ingredient
+  - CancelButton
+  - ExitButton
+  - PlayButton
+  - OtherButton
+  - BarNameManager
   layers:
   - Default
   - TransparentFX
