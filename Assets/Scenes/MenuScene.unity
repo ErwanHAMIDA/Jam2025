@@ -821,10 +821,10 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 1998085227}
-    m_SelectOnDown: {fileID: 766566137}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnUp: {fileID: 766566137}
+    m_SelectOnDown: {fileID: 1998085227}
+    m_SelectOnLeft: {fileID: 766566137}
+    m_SelectOnRight: {fileID: 1998085227}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1173,9 +1173,9 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 391715374}
-    m_SelectOnDown: {fileID: 1998085227}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnDown: {fileID: 391715374}
+    m_SelectOnLeft: {fileID: 1998085227}
+    m_SelectOnRight: {fileID: 1998085227}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1637,7 +1637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4e27cfb9707a3c46809389b0ace7c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: GamePlaceholder
+  _sceneName: GameScene
 --- !u!4 &1312943886
 Transform:
   m_ObjectHideFlags: 0
@@ -2864,12 +2864,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnUp: {fileID: 391715374}
+    m_SelectOnDown: {fileID: 391715374}
+    m_SelectOnLeft: {fileID: 766566137}
+    m_SelectOnRight: {fileID: 766566137}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}

@@ -13,18 +13,31 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private Vector3[] _buttonPositions;
     [SerializeField] private GameObject _backButton;
     [SerializeField] private GameObject _playButton;
+    [SerializeField] private GameObject _pauseCanvas;
 
     [Range(0.1f, 2.0f)]
     [SerializeField] private float _delay = 1.0f;
     [Range(0.1f, 2.0f)]
     [SerializeField] private float _transitionDuration = 1.0f;
 
-    public void EnablePauseMenu()
+    private bool _isOnPause = false;
+
+    public void Pause()
+    {
+        _isOnPause = !_isOnPause;
+
+        if (_isOnPause)
+            EnablePauseMenu();
+        else
+            DisablePauseMenu();
+    }
+
+    private void EnablePauseMenu()
     {
         StartCoroutine(AnimateStartMenu(_delay));
     }
 
-    public void DisablePauseMenu()
+    private void DisablePauseMenu()
     {
         StartCoroutine(AnimateEndMenu(_delay));
     }
@@ -34,6 +47,7 @@ public class PauseMenuManager : MonoBehaviour
         if (_allButtons.Length != _buttonPositions.Length) throw new ArgumentOutOfRangeException(
             "Not the same quantity between buttons number and positions number", nameof(_allButtons.Length) + " / " + nameof(_buttonPositions.Length));
 
+        _pauseCanvas.gameObject.SetActive(true);
         Time.timeScale = 0.0f;
         for (int i = 0; i < _allButtons.Length; i++)
         {
@@ -57,6 +71,7 @@ public class PauseMenuManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(delay);
         }
 
+        _pauseCanvas.gameObject.SetActive(false);
         Time.timeScale = 1.0f;
     }
 

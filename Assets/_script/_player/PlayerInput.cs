@@ -12,8 +12,14 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private InputActionReference _clickActionReference;
     [SerializeField] private InputActionReference _pauseActionReference;
 
+    [Header("======| PauseMenu Ref |======")]
+    [Header("")]
+    [SerializeField] private PauseMenuManager _pauseMenuManager;
+
     private PlayerBehavior _behavior;
     private DragController _dragController;
+
+    private bool _isOnPause = false;
 
     private void Start()
     {
@@ -55,6 +61,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Pause_started(InputAction.CallbackContext obj)
     {
+        _pauseMenuManager.Pause();
     }
 
     private void Click_canceled(InputAction.CallbackContext obj)
