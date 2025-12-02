@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     [Header("======| Other |======")]
     [Header("")]
-    [SerializeField] GameObject charcterPrefab;
+    [SerializeField] GameObject characterPrefab;
     [SerializeField] GameObject Shaker;
     [SerializeField] GameObject GoldTextCount;
     [SerializeField] GameObject PhysicEnvironmentHolder;
@@ -42,9 +42,9 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameData.Gold = 100;
-        GameObject newCharacter = Instantiate(charcterPrefab);
-        charcterPrefab.gameObject.SetActive(true);
+        GameData.Gold = 1000;
+        GameObject newCharacter = Instantiate(characterPrefab);
+        characterPrefab.gameObject.SetActive(true);
         CharacterBehaviour characterBehaviour = newCharacter.GetComponent<CharacterBehaviour>();
         characterBehaviour.CharacterCreation(0b010001); // 0b010000 + 0b000001
         characterBehaviour.WalkAudio = walkAudio;
@@ -107,13 +107,12 @@ public class GameManager : MonoBehaviour
     {
         _clickActionReference.action.Disable();
         _pauseActionReference.action.Disable();
-        SpawnNewClient();
     }
 
     public void SpawnNewClient()
     {
-        GameObject newCharacter = Instantiate(charcterPrefab);
-        charcterPrefab.gameObject.SetActive(true);
+        GameObject newCharacter = Instantiate(characterPrefab);
+        characterPrefab.gameObject.SetActive(true);
         CharacterBehaviour characterBehaviour = newCharacter.GetComponent<CharacterBehaviour>();
         characterBehaviour.CharacterCreation(0b010001); // 0b010000 + 0b000001
         characterBehaviour.WalkAudio = walkAudio;
