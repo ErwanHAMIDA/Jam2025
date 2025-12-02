@@ -100,11 +100,7 @@ public class GameManager : MonoBehaviour
 
     private void Pause_started(InputAction.CallbackContext obj)
     {
-        _isPauseMenu = !_isPauseMenu;
-        if (_isPauseMenu)
-            _pauseMenuManager.EnablePauseMenu();
-        else
-            _pauseMenuManager.DisablePauseMenu();
+        _pauseMenuManager.Pause();
     }
 
     private void OnDestroy()

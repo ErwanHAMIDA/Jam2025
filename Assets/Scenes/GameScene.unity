@@ -3553,6 +3553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 753653f2947197c4ca499fb309609a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clip: {fileID: 0}
 --- !u!1 &410769749
 GameObject:
   m_ObjectHideFlags: 0
@@ -3715,6 +3716,7 @@ MonoBehaviour:
   valueInSweet: -5
   valueInAlchool: 20
   valueInSparkling: 15
+  hitSound: {fileID: 0}
 --- !u!114 &410769755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4579,6 +4581,7 @@ MonoBehaviour:
   valueInSweet: 30
   valueInAlchool: -30
   valueInSparkling: 35
+  hitSound: {fileID: 0}
 --- !u!114 &517731313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6148,6 +6151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldCamera: {fileID: 1678318294}
   spawnPoint: {fileID: 803546820}
+  hitSound: {fileID: 0}
 --- !u!1 &808733029
 GameObject:
   m_ObjectHideFlags: 0
@@ -7436,6 +7440,7 @@ MonoBehaviour:
   OpenSprite: {fileID: 4078802072123479578, guid: 28beaa0ee961a3a4f9ced205d31f333a, type: 3}
   CloseSprite: {fileID: -7679144094554536194, guid: eece3c482a7f9944886754ecca50b440, type: 3}
   Shaker: {fileID: 1258774455}
+  pourAudio: {fileID: 0}
 --- !u!61 &948872132
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9812,6 +9817,7 @@ MonoBehaviour:
   - {fileID: -7962265800411467256, guid: 063b7044e05a0ec4e88c304f49b9543f, type: 3}
   - {fileID: -7245966700060494964, guid: 9c7eb929d7616be4387ff95d23c81d46, type: 3}
   - {fileID: 541068108005011974, guid: 75ab7e078dd70494ca3d4ad7c7c11509, type: 3}
+  clip: {fileID: 0}
 --- !u!114 &1252319462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9915,6 +9921,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StatsDisplayer: {fileID: 1639865363}
+  openedSprite: {fileID: 0}
+  closedSprite: {fileID: 0}
 --- !u!61 &1258774456
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10360,6 +10368,7 @@ MonoBehaviour:
   OpenSprite: {fileID: 4078802072123479578, guid: 28beaa0ee961a3a4f9ced205d31f333a, type: 3}
   CloseSprite: {fileID: -7679144094554536194, guid: eece3c482a7f9944886754ecca50b440, type: 3}
   Shaker: {fileID: 1258774455}
+  pourAudio: {fileID: 0}
 --- !u!61 &1289310205
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10994,6 +11003,7 @@ MonoBehaviour:
   valueInSweet: 15
   valueInAlchool: 30
   valueInSparkling: -10
+  hitSound: {fileID: 0}
 --- !u!114 &1366576571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12856,6 +12866,7 @@ MonoBehaviour:
   OpenSprite: {fileID: 4078802072123479578, guid: 28beaa0ee961a3a4f9ced205d31f333a, type: 3}
   CloseSprite: {fileID: -7679144094554536194, guid: eece3c482a7f9944886754ecca50b440, type: 3}
   Shaker: {fileID: 1258774455}
+  pourAudio: {fileID: 0}
 --- !u!61 &1623585959
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17735,11 +17746,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe211e0bf18ea4f46864560cb0636f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputActions: {fileID: -944628639613478452, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
+  _clickActionReference: {fileID: 2194193358114801714, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
+  _pauseActionReference: {fileID: -6665811581691778710, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
+  _pauseMenuManager: {fileID: 1083960914}
   charcterPrefab: {fileID: 5453462248558739516, guid: 24aee626d07643e449019714383d5e8f, type: 3}
   Shaker: {fileID: 1258774452}
   GoldTextCount: {fileID: 1134292987}
   PhysicEnvironmentHolder: {fileID: 9584820}
   WorldCam: {fileID: 1678318294}
+  bellRing: {fileID: 0}
+  walkAudio: {fileID: 0}
+  payAudio: {fileID: 0}
 --- !u!114 &2126696763
 MonoBehaviour:
   m_ObjectHideFlags: 0
