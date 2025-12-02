@@ -136,6 +136,8 @@ public class CharacterBehaviour : MonoBehaviour
         transform.GetChild(1).gameObject.SetActive(false);
         yield return new WaitForSeconds(3.5f);
         gm.SpawnNewClient();
+
+        Destroy(gameObject);
     }
 
     public CharacterSpe GetCharactersSpecifications()
