@@ -16,7 +16,6 @@ public class PlayerInput : MonoBehaviour
     [Header("")]
     [SerializeField] private PauseMenuManager _pauseMenuManager;
 
-    private PlayerBehavior _behavior;
     private DragController _dragController;
 
     private bool _isOnPause = false;
@@ -36,7 +35,6 @@ public class PlayerInput : MonoBehaviour
         _pauseActionReference.action.canceled += Pause_canceled;
         #endregion
 
-        _behavior = GetComponent<PlayerBehavior>();
         _dragController = GetComponent<DragController>();
     }
     private void OnEnable()

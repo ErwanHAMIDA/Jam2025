@@ -22,6 +22,8 @@ public class PauseMenuManager : MonoBehaviour
 
     private bool _isOnPause = false;
 
+    private Coroutine _currentCoroutine;
+
     public void Pause()
     {
         _isOnPause = !_isOnPause;
@@ -30,10 +32,14 @@ public class PauseMenuManager : MonoBehaviour
             EnablePauseMenu();
         else
             DisablePauseMenu();
+
+        Debug.Log(_isOnPause);
     }
 
     private void EnablePauseMenu()
     {
+        if (_currentCoroutine != null) StopCoroutine(_currentCoroutine);
+
         StartCoroutine(AnimateStartMenu(_delay));
     }
 
@@ -47,7 +53,7 @@ public class PauseMenuManager : MonoBehaviour
         if (_allButtons.Length != _buttonPositions.Length) throw new ArgumentOutOfRangeException(
             "Not the same quantity between buttons number and positions number", nameof(_allButtons.Length) + " / " + nameof(_buttonPositions.Length));
 
-        _pauseCanvas.gameObject.SetActive(true);
+        _pauseCanvas.SetActive(true);
         Time.timeScale = 0.0f;
         for (int i = 0; i < _allButtons.Length; i++)
         {
@@ -71,7 +77,7 @@ public class PauseMenuManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(delay);
         }
 
-        _pauseCanvas.gameObject.SetActive(false);
+        _pauseCanvas.SetActive(false);
         Time.timeScale = 1.0f;
     }
 

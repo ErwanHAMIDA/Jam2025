@@ -849,7 +849,6 @@ Transform:
   m_Children:
   - {fileID: 2126696764}
   - {fileID: 1083960915}
-  - {fileID: 938158933}
   - {fileID: 916313711}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7164,67 +7163,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918747619}
   m_CullTransparentMesh: 1
---- !u!1 &938158932
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 938158933}
-  - component: {fileID: 938158934}
-  - component: {fileID: 938158935}
-  m_Layer: 0
-  m_Name: PlayerManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &938158933
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938158932}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -175.29027, y: -1.90831, z: -502.91635}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 111873129}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &938158934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938158932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ce92a0aa2e5a1e45bc76349d33f3157, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inputActions: {fileID: -944628639613478452, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
-  _clickActionReference: {fileID: 2194193358114801714, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
-  _pauseActionReference: {fileID: -6665811581691778710, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
-  _pauseMenuManager: {fileID: 1083960914}
---- !u!114 &938158935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938158932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f3f9d20dcdf7c341b46b2dd39d28878, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &943638874
 GameObject:
   m_ObjectHideFlags: 0
@@ -17727,6 +17665,7 @@ GameObject:
   - component: {fileID: 2126696762}
   - component: {fileID: 2126696763}
   - component: {fileID: 2126696765}
+  - component: {fileID: 2126696766}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -17746,10 +17685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe211e0bf18ea4f46864560cb0636f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputActions: {fileID: -944628639613478452, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
-  _clickActionReference: {fileID: 2194193358114801714, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
-  _pauseActionReference: {fileID: -6665811581691778710, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
-  _pauseMenuManager: {fileID: 1083960914}
   characterPrefab: {fileID: 5453462248558739516, guid: b2d5be9aa4cfd5245922d8df980f6b18, type: 3}
   Shaker: {fileID: 1258774452}
   GoldTextCount: {fileID: 1134292987}
@@ -17798,6 +17733,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastDragged: {fileID: 0}
+--- !u!114 &2126696766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126696761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce92a0aa2e5a1e45bc76349d33f3157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputActions: {fileID: -944628639613478452, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
+  _clickActionReference: {fileID: 2194193358114801714, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
+  _pauseActionReference: {fileID: -6665811581691778710, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
+  _pauseMenuManager: {fileID: 1083960914}
 --- !u!1 &2133091566
 GameObject:
   m_ObjectHideFlags: 0
