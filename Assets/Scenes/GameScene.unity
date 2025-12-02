@@ -17750,7 +17750,7 @@ MonoBehaviour:
   _clickActionReference: {fileID: 2194193358114801714, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
   _pauseActionReference: {fileID: -6665811581691778710, guid: 52669e765e792c6489f6a27ac7b1e987, type: 3}
   _pauseMenuManager: {fileID: 1083960914}
-  charcterPrefab: {fileID: 5453462248558739516, guid: 24aee626d07643e449019714383d5e8f, type: 3}
+  charcterPrefab: {fileID: 5453462248558739516, guid: b2d5be9aa4cfd5245922d8df980f6b18, type: 3}
   Shaker: {fileID: 1258774452}
   GoldTextCount: {fileID: 1134292987}
   PhysicEnvironmentHolder: {fileID: 9584820}

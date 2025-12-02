@@ -55,7 +55,6 @@ public class CharacterBehaviour : MonoBehaviour
 {
     AudioClip payAudio;
     AudioClip walkAudio;
-    GameObject DialogueHandler;
     CharacterSpe specifities;
     Animator characterAnimator;
     GameManager gm;
@@ -70,6 +69,8 @@ public class CharacterBehaviour : MonoBehaviour
     public AudioClip PayAudio { set { payAudio = value; } }    
     public AudioClip WalkAudio { set { payAudio = value; } }    
     bool isWaitingForDrink;
+
+    [SerializeField] private GameObject DialogueHandler;
     // favorite Ingredients
     // Hated Ingredients
 
@@ -87,8 +88,6 @@ public class CharacterBehaviour : MonoBehaviour
         transform.position = new Vector3( 0.0f - (w * 0.5f), 0.0f,0.0f);
         openOffer = true;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-
-        DialogueHandler = transform.GetChild(0).gameObject;
     }
 
     void Arrival()
