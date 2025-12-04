@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         if (Shaker.GetComponent<Shaker>().CanBeServed() == false)
             return;
 
-        SFXManager.Instance.PlaySFXClip(bellRing, transform, 1);
+        //SFXManager.Instance.PlaySFXClip(bellRing, transform, 1);
         StartCoroutine(ManageCocktail());
 
     }

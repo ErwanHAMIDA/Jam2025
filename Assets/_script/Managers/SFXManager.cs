@@ -44,7 +44,7 @@ public class SFXManager : MonoBehaviour
 
     public void PlayNavigate()
     {
-        _audioSourceMenu.PlayOneShot(_navigateAudioClip, 1.0f);
+        //_audioSourceMenu.PlayOneShot(_navigateAudioClip, 1.0f);
     }
 
     private void OnEnable()

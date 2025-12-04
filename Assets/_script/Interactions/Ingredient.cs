@@ -74,7 +74,7 @@ public class Ingredient : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        SFXManager.Instance.PlaySFXClip(hitSound, transform, 1);
+        //SFXManager.Instance.PlaySFXClip(hitSound, transform, 1);
     }
 
     public Dictionary<IngredientType, int> GetIngredientStats()

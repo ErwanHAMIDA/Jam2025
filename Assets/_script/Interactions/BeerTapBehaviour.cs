@@ -40,7 +40,7 @@ public class BeerTapBehaviour : MonoBehaviour
         }
         else
         {
-            SFXManager.Instance.PlaySFXClip(pourAudio, transform, 1);
+            //SFXManager.Instance.PlaySFXClip(pourAudio, transform, 1);
             Open();
         }
     }
