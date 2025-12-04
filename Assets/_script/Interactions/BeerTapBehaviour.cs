@@ -7,34 +7,34 @@ public class BeerTapBehaviour : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    [SerializeField] Sprite OpenSprite;
-    [SerializeField] Sprite CloseSprite;
-    [SerializeField] Shaker Shaker;
-    [SerializeField] AudioClip pourAudio;
+    [SerializeField] private Sprite _openSprite;
+    [SerializeField] private Sprite _closeSprite;
+    [SerializeField] private Shaker _shaker;
+    [SerializeField] private AudioClip _pourAudio;
 
-    bool isCollidingWithShaker = false;
-    bool isOpen;
-    float goUpCD = 0.0f;
-    float goUpMax = 2.0f;
+    private bool _isCollidingWithShaker = false;
+    private bool _isOpen = false;
+    private float _goUpCD = 0.0f;
+    private float _goUpMax = 2.0f;
 
 
     public void Open()
     {
         transform.GetChild(0).transform.localPosition = new Vector3(0.0f,0.3f,0.0f);
-        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = OpenSprite;
-        isOpen = true;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _openSprite;
+        _isOpen = true;
     }
 
     public void Close()
     {
         transform.GetChild(0).transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = CloseSprite;
-        isOpen = false; 
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _closeSprite;
+        _isOpen = false; 
     }
 
     public void Toggle()
     {
-        if (isOpen)
+        if (_isOpen)
         {
             Close();
         }
@@ -47,17 +47,17 @@ public class BeerTapBehaviour : MonoBehaviour
 
     public void TryAddIngredient(Ingredient ingredient)
     {
-        if (isCollidingWithShaker == false)
+        if (_isCollidingWithShaker == false)
             return;
 
-        Shaker.GetComponent<Shaker>().AddFromTireuse(ingredient);
+        _shaker.GetComponent<Shaker>().AddFromTireuse(ingredient);
     }
 
     void OnTriggerStay2D(Collider2D col)
     {
         if (col.gameObject.tag == "Shaker")
         {
-            isCollidingWithShaker = true;
+            _isCollidingWithShaker = true;
         }
     }
 
@@ -65,26 +65,19 @@ public class BeerTapBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Shaker")
         {
-            isCollidingWithShaker = false;
+            _isCollidingWithShaker = false;
         }
     }
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-
-        if (isOpen == false)
+        if (_isOpen == false)
         {
-            goUpCD += Time.deltaTime;
-            if (goUpCD >= goUpMax)
+            _goUpCD += Time.deltaTime;
+            if (_goUpCD >= _goUpMax)
             {
                 Open();
-                goUpCD = 0.0f;
+                _goUpCD = 0.0f;
             }
         }
     }

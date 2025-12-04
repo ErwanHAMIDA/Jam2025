@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class ButtonsBehaviours : MonoBehaviour
 {
-    [SerializeField] Sprite OpenSprite;
-    [SerializeField] Sprite CloseSprite;
-    [SerializeField] Image _shopImage;
+    [SerializeField] private Sprite _openSprite;
+    [SerializeField] private Sprite _closeSprite;
+    [SerializeField] private Image _shopImage;
 
     private bool _isUseShop = false;
 
@@ -14,8 +14,8 @@ public class ButtonsBehaviours : MonoBehaviour
         _isUseShop = !_isUseShop;
 
         if (_isUseShop)
-            _shopImage.sprite = OpenSprite;
+            _shopImage.sprite = _openSprite;
         else
-            _shopImage.sprite = CloseSprite;
+            _shopImage.sprite = _closeSprite;
     }
 }

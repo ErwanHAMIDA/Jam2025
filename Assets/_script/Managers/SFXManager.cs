@@ -16,6 +16,8 @@ public class SFXManager : MonoBehaviour
 
     public static SFXManager Instance { get; private set; }
 
+    private InputSystemUIInputModule ui;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -49,15 +51,13 @@ public class SFXManager : MonoBehaviour
 
     private void OnEnable()
     {
-        InputSystemUIInputModule ui = FindAnyObjectByType<InputSystemUIInputModule>();
+        ui = FindAnyObjectByType<InputSystemUIInputModule>();
         ui.move.action.performed += OnNavigate;
         ui.submit.action.performed += OnSubmit;
     }
 
     private void OnDisable()
     {
-        InputSystemUIInputModule ui = FindAnyObjectByType<InputSystemUIInputModule>();
-
         ui.move.action.performed -= OnNavigate;
         ui.submit.action.performed -= OnSubmit;
     }
