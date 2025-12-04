@@ -4,7 +4,7 @@ public class DDOL : MonoBehaviour
 {
     private void Awake()
     {
-        if (FindObjectsOfType<DDOL>().Length > 1)
+        if (FindObjectsByType<DDOL>(FindObjectsSortMode.None).Length > 1)
         {
             Destroy(gameObject);
             return;

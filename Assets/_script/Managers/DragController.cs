@@ -14,13 +14,13 @@ public class DragController : MonoBehaviour
 
     private void Start()
     {
-        _dragController = FindObjectOfType<DragController>();
-        _draggable = FindObjectOfType<Draggable>();
+        _dragController = FindAnyObjectByType<DragController>();
+        _draggable = FindAnyObjectByType<Draggable>();
     }
 
     void Awake()
     {
-        DragController[] dragControllers = FindObjectsOfType<DragController>();
+        DragController[] dragControllers = FindObjectsByType<DragController>(FindObjectsSortMode.None);
         if (dragControllers.Length > 1)
         {
             Destroy(gameObject);

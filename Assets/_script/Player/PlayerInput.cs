@@ -18,8 +18,6 @@ public class PlayerInput : MonoBehaviour
 
     private DragController _dragController;
 
-    private bool _isOnPause = false;
-
     private void Start()
     {
         #region InputActionFolks
