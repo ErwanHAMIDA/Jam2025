@@ -10,32 +10,16 @@ public struct CharacterSpe
 
 public class Gambling : MonoBehaviour
 {
-    float _rate;
-    float _range;
-    int _difficulty;
-    int _maxDifficulty;
-    CharacterSpe _characterSpe;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        //CharacterSpe characterSpe;
-        //characterSpe.itemValue = 100;
-        //characterSpe.idealStats = new Dictionary<string, int>();
-        //characterSpe.idealStats["sweet"] = 50;
-        //characterSpe.idealStats["temp"] = 50;
-
-        //Dictionary<string, int> resultCocktail = new Dictionary<string, int>();
-        //resultCocktail["sweet"] = 64;
-        //resultCocktail["temp"] = 36;
-
-        //GenerateInformations(characterSpe);
-        //CalculatePayment(resultCocktail);
-    }
+    private float _rate;
+    private float _range;
+    private int _difficulty;
+    private int _maxDifficulty;
+    private CharacterSpe _characterSpe;
 
     public void GenerateInformations(CharacterSpe specialisations)
     {
         _maxDifficulty = 4;
-        _difficulty = 3;// UnityEngine.Random.Range(2, maxDifficulty + 1);
+        _difficulty = 3;
         _rate = _difficulty - 0.5f;
         _range = (_maxDifficulty - _rate) * 5;
         

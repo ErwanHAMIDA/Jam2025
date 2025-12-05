@@ -2,31 +2,17 @@ using UnityEngine;
 
 public class SpawnIngredient : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private Camera worldCamera;
-    [SerializeField] private GameObject spawnPoint;
-    [SerializeField] private AudioClip hitSound;
+    [SerializeField] private GameObject _spawnPoint;
     
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void InstantiateIngredient(GameObject ingredient)
     {
-        Vector3 worldPos = worldCamera.ScreenToWorldPoint(spawnPoint.transform.position);
+        Vector3 worldPos = worldCamera.ScreenToWorldPoint(_spawnPoint.transform.position);
 
         worldPos.z = 0f;
 
-        GameObject ingre = Instantiate(ingredient, worldPos, Quaternion.identity);
-        ingre.tag = "Ingredient";
-        ingre.AddComponent<IngredientInShaker>();
-        ingre.GetComponent<Ingredient>().HitSound = hitSound;
+        GameObject newIngredient = Instantiate(ingredient, worldPos, Quaternion.identity);
+        newIngredient.tag = "Ingredient";
+        newIngredient.AddComponent<IngredientInShaker>();
     }
 }

@@ -4,50 +4,41 @@ using UnityEngine.UI;
 
 public class Mixer : MonoBehaviour
 {
-    Ingredient MixedIngredient;
-    bool isFull = false;
+    private Ingredient _mixedIngredient;
+    private bool _isFull = false;
 
     public void PutIngredient(Ingredient ingredient)
     {
-        MixedIngredient = ingredient;
-        isFull = true;
+        _mixedIngredient = ingredient;
+        _isFull = true;
     }
 
     public void MixIngredient()
     {
-        if (isFull == true)
+        if (_isFull == true)
         {
             GetComponent<Draggable>().enabled = true;
-            //GetComponentInChildren<Image>().enabled = true;
             GetComponentInChildren<SpriteRenderer>().color = Color.red;
         }
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public bool GetMixerState()
-    {
-        return isFull;
-    }
-
-    public Ingredient GetIngredient()
-    {
-        return MixedIngredient;
     }
 
     public void EmptyMixer()
     {
-        isFull = false;
-        MixedIngredient = null;
+        _isFull = false;
+        _mixedIngredient = null;
         GetComponent<Draggable>().enabled = false;
-        GetComponentInChildren<Image>().color = Color.white;
+        GetComponentInChildren<SpriteRenderer>().color = Color.white;
     }
+
+    #region Helpers
+    public bool GetMixerState()
+    {
+        return _isFull;
+    }
+
+    public Ingredient GetIngredient()
+    {
+        return _mixedIngredient;
+    }
+    #endregion
 }

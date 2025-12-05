@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 
@@ -9,14 +7,10 @@ public class SFXManager : MonoBehaviour
     [SerializeField] private AudioSource _SFXObject;
     [SerializeField] private AudioSource _audioSourceMenu;
     [SerializeField] private AudioClip _navigateAudioClip;
-    //[SerializeField] private AudioClip _validateAudioClip;
-    //[SerializeField] private AudioClip _exitAudioClip;
-    //[SerializeField] private AudioClip _playAudioClip;
-    //[SerializeField] private AudioClip _cancelAudioClip;
 
     public static SFXManager Instance { get; private set; }
 
-    private InputSystemUIInputModule ui;
+    private InputSystemUIInputModule _inputSystemModule;
 
     private void Awake()
     {
@@ -51,15 +45,15 @@ public class SFXManager : MonoBehaviour
 
     private void OnEnable()
     {
-        ui = FindAnyObjectByType<InputSystemUIInputModule>();
-        ui.move.action.performed += OnNavigate;
-        ui.submit.action.performed += OnSubmit;
+        _inputSystemModule = FindAnyObjectByType<InputSystemUIInputModule>();
+        _inputSystemModule.move.action.performed += OnNavigate;
+        _inputSystemModule.submit.action.performed += OnSubmit;
     }
 
     private void OnDisable()
     {
-        ui.move.action.performed -= OnNavigate;
-        ui.submit.action.performed -= OnSubmit;
+        _inputSystemModule.move.action.performed -= OnNavigate;
+        _inputSystemModule.submit.action.performed -= OnSubmit;
     }
 
     private void OnNavigate(InputAction.CallbackContext ctx)

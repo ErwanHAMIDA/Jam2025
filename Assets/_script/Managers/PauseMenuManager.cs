@@ -53,6 +53,7 @@ public class PauseMenuManager : MonoBehaviour
 
         _pauseCanvas.SetActive(true);
         Time.timeScale = 0.0f;
+
         for (int i = 0; i < _allButtons.Length; i++)
         {
             _allButtons[i].enabled = true;
@@ -83,6 +84,7 @@ public class PauseMenuManager : MonoBehaviour
     {
         RectTransform rect = button.GetComponent<RectTransform>();
         CanvasGroup canvasGroup = button.GetComponent<CanvasGroup>();
+
         if (canvasGroup == null)
         {
             canvasGroup = button.gameObject.AddComponent<CanvasGroup>();
@@ -180,7 +182,6 @@ public class PauseMenuManager : MonoBehaviour
     }
     public void ChangeSelectedButton(GameObject button)
     {
-        EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(button);
     }
 }

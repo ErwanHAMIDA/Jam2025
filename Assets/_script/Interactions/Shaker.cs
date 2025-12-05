@@ -3,37 +3,35 @@ using UnityEngine;
 
 public class Shaker : MonoBehaviour
 {
-    [SerializeField] GameObject StatsDisplayer;
-    [SerializeField] Sprite openedSprite;
-    [SerializeField] Sprite closedSprite;
+    [SerializeField] GameObject _statsDisplayer;
+    [SerializeField] Sprite _openedSprite;
+    [SerializeField] Sprite _closedSprite;
 
-    private Dictionary<IngredientType, int> DrinkStats = new Dictionary<IngredientType, int>(4)
+    private Dictionary<IngredientType, int> _drinkStats = new Dictionary<IngredientType, int>(4)
     {
-        {IngredientType.TEMP, 50},
-        {IngredientType.SWEET, 50},
-        {IngredientType.ALCOHOL, 50},
-        { IngredientType.SPARKLING, 50 }
+        {   IngredientType.TEMP, 50         },
+        {   IngredientType.SWEET, 50        },
+        {   IngredientType.ALCOHOL, 50      },
+        {   IngredientType.SPARKLING, 50    }
     };
-    private bool isFinished = false;
-    private bool canBeServed = false;
-    private int shakeCount = 0;
-    private float posY;
+    private bool _isFinished = false;
+    private bool _canBeServed = false;
+    private int _shakeCount = 0;
+    private float _posY;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        posY = transform.position.y;
-        Debug.Log(DrinkStats);
+        _posY = transform.position.y;
+        Debug.Log(_drinkStats);
     }
 
-    // Update is called once per frame
     void Update()
     {
         Shake();
-        if (isFinished)
-            GetComponent<SpriteRenderer>().sprite = closedSprite;
+        if (_isFinished)
+            GetComponent<SpriteRenderer>().sprite = _closedSprite;
         else
-            GetComponent<SpriteRenderer>().sprite = openedSprite;
+            GetComponent<SpriteRenderer>().sprite = _openedSprite;
     }
     public void AddIngredient(Ingredient toAdd)
     {
@@ -41,9 +39,9 @@ public class Shaker : MonoBehaviour
 
         foreach (KeyValuePair<IngredientType,int> it in tmp)
         {
-            DrinkStats[it.Key] += it.Value;
+            _drinkStats[it.Key] += it.Value;
         }
-        StatsDisplayer.GetComponent<StatsDisplay>().AddStats(tmp);
+        _statsDisplayer.GetComponent<StatsDisplay>().AddStats(tmp);
     }
 
     public void AddFromTireuse(Ingredient toAdd)
@@ -53,66 +51,72 @@ public class Shaker : MonoBehaviour
 
     public void ClearDrink()
     {
-        DrinkStats[IngredientType.TEMP] = 50;
-        DrinkStats[IngredientType.SWEET] = 50;
-        DrinkStats[IngredientType.ALCOHOL] = 50;
-        DrinkStats[IngredientType.SPARKLING] = 50;
+        _drinkStats[IngredientType.TEMP] = 50;
+        _drinkStats[IngredientType.SWEET] = 50;
+        _drinkStats[IngredientType.ALCOHOL] = 50;
+        _drinkStats[IngredientType.SPARKLING] = 50;
     }
 
     public void FinishDrink()
     {
-        isFinished = true;
+        _isFinished = true;
     }
 
+    #region Helpers
     public bool GetDrinkState()
     {
-        return isFinished;
+        return _isFinished;
     }
 
     public bool CanBeServed()
     {
-        return canBeServed;
+        return _canBeServed;
     }
+    public Dictionary<IngredientType, int> GetCocktailStats()
+    {
+        return _drinkStats;
+    }
+    #endregion
 
     public void Shake()
     {
-        if (shakeCount % 2 == 0)
+        if (_shakeCount % 2 == 0)
         {
-            if (transform.position.y - posY >= 1f)
+            if (transform.position.y - _posY >= 1f)
             {
                 IncrementShakeCount();
             }
         }
         else
         {
-            if (posY - transform.position.y >= 1f)
+            if (_posY - transform.position.y >= 1f)
             {
                 IncrementShakeCount();
             }
         }
-        if (shakeCount >= 6)
+        if (_shakeCount >= 6)
         {
-            canBeServed = true;
+            _canBeServed = true;
         }
     }
     private void IncrementShakeCount()
     {
-        shakeCount++;
-        posY = transform.position.y;
-    }
-
-    public Dictionary<IngredientType, int> GetCocktailStats()
-    {
-        // Check if shaker Ready
-        return DrinkStats;
+        _shakeCount++;
+        _posY = transform.position.y;
     }
 
     public void ResetShaker()
     {
-        shakeCount = 0;
         ClearDrink();
-        canBeServed = false;
-        isFinished = false;
-        posY = transform.position.y;
+        ClearShaker();
+
+        _posY = transform.position.y;
+    }
+
+    private void ClearShaker()
+    {
+        _shakeCount = 0;
+        _canBeServed = false;
+        _isFinished = false;
     }
 }

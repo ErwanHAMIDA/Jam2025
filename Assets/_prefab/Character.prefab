@@ -237,9 +237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 341bd9214200c794586a22e9fe54fdf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Canva: {fileID: 2738333327673738477}
-  TextBox: {fileID: 6549796494245757886}
-  TextMesh: {fileID: 279540831899494628}
+  _canvas: {fileID: 746370742610109878}
+  _textBox: {fileID: 6549796494245757886}
+  _textMesh: {fileID: 279540831899494628}
 --- !u!95 &4411282911175504819
 Animator:
   serializedVersion: 7
@@ -250,7 +250,7 @@ Animator:
   m_GameObject: {fileID: 279540831899494628}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7d7581488e513724aa46e518d17a0f9f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 269f934cc2416fc46ac9063857796a1f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -874,7 +874,10 @@ MonoBehaviour:
   - {fileID: 7603634179095125005, guid: 8c736ab3af9bf5245bb73c6696b38853, type: 3}
   - {fileID: 3815774846097670500, guid: 79c93d79b6642364c94eb1bace529ff6, type: 3}
   - {fileID: -4998455143283755344, guid: e6eabf3016870f04ea418a389c5afea1, type: 3}
-  DialogueHandler: {fileID: 279540831899494628}
+  _dialogueHandler: {fileID: 279540831899494628}
+  _dialogPannel: {fileID: 2738333327673738477}
+  _acceptButton: {fileID: 5313689385634133300}
+  _declineButton: {fileID: 1859098345971966639}
 --- !u!1 &6549796494245757886
 GameObject:
   m_ObjectHideFlags: 0

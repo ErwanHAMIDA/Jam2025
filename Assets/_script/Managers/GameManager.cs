@@ -2,86 +2,82 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Rendering.Universal;
-
 
 public class GameManager : MonoBehaviour
 {
-    [Header("======| Other |======")]
+    [Header("======| Camera |======")]
     [Header("")]
-    [SerializeField] GameObject characterPrefab;
-    [SerializeField] GameObject Shaker;
-    [SerializeField] GameObject GoldTextCount;
-    [SerializeField] GameObject PhysicEnvironmentHolder;
-    [SerializeField] Camera WorldCam;
-    [SerializeField] AudioClip bellRing;
-    [SerializeField] AudioClip walkAudio;
-    [SerializeField] AudioClip payAudio;
+    [SerializeField] private Camera _worldCam;
 
-    GameObject currentCharacter;
+    [Header("======| Audio Clips |======")]
+    [Header("")]
+    [SerializeField] private AudioClip _bellRing;
+    [SerializeField] private AudioClip _walkAudio;
+    [SerializeField] private AudioClip _payAudio;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("======| Text |======")]
+    [Header("")]
+    [SerializeField] private TMP_Text _goldTextCount;
+
+    [Header("======| Others |======")]
+    [Header("")]
+    [SerializeField] private GameObject _characterPrefab;
+    [SerializeField] private GameObject _physicEnvironmentHolder;
+    [SerializeField] private Shaker _shaker;
+
+    private GameObject _currentCharacter;
+    private CharacterBehaviour _characterBehaviour;
+
     void Start()
     {
         GameData.Gold = 1000;
-        GameObject newCharacter = Instantiate(characterPrefab);
-        characterPrefab.gameObject.SetActive(true);
-        CharacterBehaviour characterBehaviour = newCharacter.GetComponent<CharacterBehaviour>();
-        characterBehaviour.CharacterCreation(0b010001); // 0b010000 + 0b000001
-        characterBehaviour.WalkAudio = walkAudio;
-        characterBehaviour.PayAudio = payAudio;
-        currentCharacter = newCharacter;
-        GetComponent<Gambling>().GenerateInformations(newCharacter.GetComponent<CharacterBehaviour>().GetCharactersSpecifications());
+
+        SpawnNewClient();
     }
 
     public void SpawnNewClient()
     {
-        GameObject newCharacter = Instantiate(characterPrefab);
-        characterPrefab.gameObject.SetActive(true);
-        CharacterBehaviour characterBehaviour = newCharacter.GetComponent<CharacterBehaviour>();
-        characterBehaviour.CharacterCreation(0b010001); // 0b010000 + 0b000001
-        characterBehaviour.WalkAudio = walkAudio;
-        characterBehaviour.PayAudio = payAudio;
-        //characterBehaviour.Sprites = _sprites;
-        currentCharacter = newCharacter;
-        GetComponent<Gambling>().GenerateInformations(newCharacter.GetComponent<CharacterBehaviour>().GetCharactersSpecifications());
+        GameObject newCharacter = Instantiate(_characterPrefab);
+        _characterBehaviour = newCharacter.GetComponent<CharacterBehaviour>();
+
+        _currentCharacter = newCharacter;
+        _characterPrefab.gameObject.SetActive(true);
+
+        _characterBehaviour.CharacterCreation(0b010001); // 0b010000 + 0b000001
+        _characterBehaviour.WalkAudio = _walkAudio;
+        _characterBehaviour.PayAudio = _payAudio;
+
+        GetComponent<Gambling>().GenerateInformations(_characterBehaviour.GetCharactersSpecifications());
     }
 
     public void ValidCocktail() 
     {
-        if (currentCharacter.GetComponent<CharacterBehaviour>().IsWaitingForDrink() == false)
+        if (_characterBehaviour.IsWaitingForDrink() == false)
             return;
 
-        if (Shaker.GetComponent<Shaker>().CanBeServed() == false)
+        if (_shaker.GetComponent<Shaker>().CanBeServed() == false)
             return;
 
-        //SFXManager.Instance.PlaySFXClip(bellRing, transform, 1);
         StartCoroutine(ManageCocktail());
-
     }
 
     IEnumerator ManageCocktail()
     {
         int price = 0;
-        Dictionary<IngredientType, int> ShakerStats = Shaker.GetComponent<Shaker>().GetCocktailStats();
+        Dictionary<IngredientType, int> ShakerStats = _shaker.GetCocktailStats();
         price = (int)GetComponent<Gambling>().CalculatePayment(ShakerStats);
-        currentCharacter.GetComponent<CharacterBehaviour>().ReceiveShaker(price);
-        GameData.Gold += price;
+        _characterBehaviour.ReceiveShaker(price);
+
+        UpdateGold(price);
 
         yield return new WaitForSeconds(3.0f);
         SpawnNewClient();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateGold(int amount)
     {
-        // TEMP
-        //if (Input.GetKeyDown(KeyCode.E))
-        //    SpawnNewClient();
+        GameData.Gold += amount;
 
-        GoldTextCount.GetComponent<TMP_Text>().text = GameData.Gold.ToString();
+        _goldTextCount.text = GameData.Gold.ToString();
     }
-
-    
 }

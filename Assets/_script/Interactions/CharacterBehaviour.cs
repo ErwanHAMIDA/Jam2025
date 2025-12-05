@@ -1,8 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 struct Flags 
 {
@@ -30,13 +30,13 @@ enum characterType
     PAS_SWEET           = 0b010000,
     NEUTRAL_SWEET       = 0b100000,
 
-    SANS_ACOOL = 0b001000,
-    ALCOOL = 0b010000,
-    NEUTRAL_ALCOOL= 0b100000,
+    SANS_ACOOL          = 0b001000,
+    ALCOOL              = 0b010000,
+    NEUTRAL_ALCOOL      = 0b100000,
 
-    PLAT = 0b001000,
-    SPARKLING= 0b010000,
-    NEUTRAL_SPARKLING = 0b100000,
+    PLAT                = 0b001000,
+    SPARKLING           = 0b010000,
+    NEUTRAL_SPARKLING   = 0b100000,
 
     COUNT = 12,
 }
@@ -47,30 +47,33 @@ enum WhoIsIt
     CHIEN,
     PHOQUE,
     JOKER
-    
 }
-
 
 public class CharacterBehaviour : MonoBehaviour
 {
-    AudioClip payAudio;
-    AudioClip walkAudio;
-    CharacterSpe specifities;
-    Animator characterAnimator;
-    GameManager gm;
+    [SerializeField] private List<Sprite> _sprites;
+    [SerializeField] private GameObject _dialogueHandler;
+    [SerializeField] private GameObject _dialogPannel;
+    [SerializeField] private GameObject _acceptButton;
+    [SerializeField] private GameObject _declineButton;
 
-    WhoIsIt _currentWhoIsIt;
+    private AudioClip _payAudio;
+    private AudioClip _walkAudio;
+    private CharacterSpe _specifities;
+    private Animator _characterAnimator;
+    private GameManager _gameManager;
 
-    [SerializeField] List<Sprite> _sprites;
-    int offerPrice;
+    private WhoIsIt _currentWhoIsIt;
 
-    bool openOffer;
+    private int _offerPrice;
 
-    public AudioClip PayAudio { set { payAudio = value; } }    
-    public AudioClip WalkAudio { set { payAudio = value; } }    
-    bool isWaitingForDrink;
+    private bool _openOffer;
+    private bool _isWaitingForDrink;
 
-    [SerializeField] private GameObject DialogueHandler;
+    public AudioClip PayAudio { set { _payAudio = value; } }    
+    public AudioClip WalkAudio { set { _walkAudio = value; } }    
+
+    #region Memo (No Code)
     // favorite Ingredients
     // Hated Ingredients
 
@@ -82,19 +85,23 @@ public class CharacterBehaviour : MonoBehaviour
     // Calculate Win %
     // Instantiate Gambling Rate
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    #endregion
     void Start()
     {
-        int w = Screen.width;
-        transform.position = new Vector3( 0.0f - (w * 0.5f), 0.0f,0.0f);
-        openOffer = true;
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        float spawnWidth = Screen.width * 0.5f;
+
+        transform.position = new Vector3( 0.0f - spawnWidth, 0.0f, 0.0f);
+        _openOffer = true;
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    void Arrival()
+    private void Arrival()
     {
-        //SFXManager.Instance.PlaySFXClip(gm.WalkAudio, transform, 1);
-
         int r = UnityEngine.Random.Range( 0, 3 );
+
+        _acceptButton.SetActive(true);
+        _declineButton.SetActive(true);
+
         switch (r)
         {
             case 0:
@@ -108,49 +115,47 @@ public class CharacterBehaviour : MonoBehaviour
                 break;
         }
     }
-
-    public bool IsWaitingForDrink()
-    {
-        return isWaitingForDrink;
-    }
-
+   
     public void AcceptOffer()
     {
-        DialogueHandler.GetComponent<DialogueScript>().CloseDialogue();
-        GameData.Gold -= offerPrice;
-        isWaitingForDrink = true;
+        GameData.Gold -= _offerPrice;
+
+        _dialogueHandler.GetComponent<DialogueScript>().CloseDialogue();
+
         transform.GetChild(1).gameObject.SetActive(false);
+        _isWaitingForDrink = true;
     }
 
     public void DeclineOffer()
     {
-        DialogueHandler.GetComponent<DialogueScript>().CloseDialogue();
         StartCoroutine(LeaveAfterDecline());
     }
 
     IEnumerator LeaveAfterDecline()
     {
-        DialogueHandler.GetComponent<DialogueScript>().SetDialogueContent("Bon bah à la prochaine");
-        DialogueHandler.GetComponent<DialogueScript>().StartTempDialogue();
+        _dialogueHandler.GetComponent<DialogueScript>().SetDialogueContent("Bon bah à la prochaine");
+        _dialogueHandler.GetComponent<DialogueScript>().StartTempDialogue();
+
         gameObject.GetComponent<Animator>().SetBool("ServedNeutral", true);
-        transform.GetChild(1).gameObject.SetActive(false);
+
         yield return new WaitForSeconds(3.5f);
-        gm.SpawnNewClient();
+        transform.GetChild(1).gameObject.SetActive(false);
+        //_dialogueHandler.GetComponent<DialogueScript>().CloseDialogue();
+
+        _gameManager.SpawnNewClient();
 
         Destroy(gameObject);
     }
 
-    public CharacterSpe GetCharactersSpecifications()
-    {
-        return specifities;
-    }
+    
     public void CharacterCreation(byte characterFlag)
     {
         _currentWhoIsIt = (WhoIsIt)UnityEngine.Random.Range(0, 4);
 
-        offerPrice = UnityEngine.Random.Range(20, 500);
+        _offerPrice = UnityEngine.Random.Range(20, 500);
         int statsCount = (int)characterType.COUNT / 3;
-        specifities.idealStats = new Dictionary<IngredientType, int>(statsCount) 
+
+        _specifities.idealStats = new Dictionary<IngredientType, int>(statsCount) 
         { 
             { IngredientType.ALCOHOL, 0 },
             { IngredientType.SPARKLING, 0 },
@@ -173,23 +178,23 @@ public class CharacterBehaviour : MonoBehaviour
                 if (Flags.HAS_FLAG(characterFlag, f1))
                 {
                     //temperature
-                    specifities.idealStats[(IngredientType)i] = 4; // -50 -> 50
+                    _specifities.idealStats[(IngredientType)i] = 4; // -50 -> 50
                 }
                 else if (Flags.HAS_FLAG(characterFlag, f2))
                 {
                     //Sweet
-                    specifities.idealStats[(IngredientType)i] = 30; // -16 -> 14
+                    _specifities.idealStats[(IngredientType)i] = 30; // -16 -> 14
                 }
                 else if (Flags.HAS_FLAG(characterFlag, f3))
                 {
                     //alcohol
-                    specifities.idealStats[(IngredientType)i] = -15; // 15 -> 100
+                    _specifities.idealStats[(IngredientType)i] = -15; // 15 -> 100
                 }
                 else if (Flags.HAS_FLAG(characterFlag, f4))
                 {
                     //Sparkling
 
-                    specifities.idealStats[(IngredientType)i] = 28; // 15 -> 100
+                    _specifities.idealStats[(IngredientType)i] = 28; // 15 -> 100
                 }
                 offset += 4;
 
@@ -209,23 +214,23 @@ public class CharacterBehaviour : MonoBehaviour
                 if (Flags.HAS_FLAG(characterFlag, f1))
                 {
                     //temperature
-                    specifities.idealStats[(IngredientType)i] = 50; // -50 -> 50
+                    _specifities.idealStats[(IngredientType)i] = 50; // -50 -> 50
                 }
                 else if (Flags.HAS_FLAG(characterFlag, f2))
                 {
                     //Sweet
-                    specifities.idealStats[(IngredientType)i] = 30; // -16 -> 14
+                    _specifities.idealStats[(IngredientType)i] = 30; // -16 -> 14
                 }
                 else if (Flags.HAS_FLAG(characterFlag, f3))
                 {
                     //alcohol
-                    specifities.idealStats[(IngredientType)i] = 40; // 15 -> 100
+                    _specifities.idealStats[(IngredientType)i] = 40; // 15 -> 100
                 }
                 else if (Flags.HAS_FLAG(characterFlag, f4))
                 {
                     //Sparkling
 
-                    specifities.idealStats[(IngredientType)i] = -45; // 15 -> 100
+                    _specifities.idealStats[(IngredientType)i] = -45; // 15 -> 100
                 }
                 offset += 4;
                 int val = (int)_currentWhoIsIt;
@@ -246,23 +251,23 @@ public class CharacterBehaviour : MonoBehaviour
                 if (Flags.HAS_FLAG(characterFlag, f1))
                 {
                     //temperature
-                    specifities.idealStats[(IngredientType)i] = -30; // -50 -> 50
+                    _specifities.idealStats[(IngredientType)i] = -30; // -50 -> 50
                 }
                 else if (Flags.HAS_FLAG(characterFlag, f2))
                 {
                     //Sweet
-                    specifities.idealStats[(IngredientType)i] = 5; // -16 -> 14
+                    _specifities.idealStats[(IngredientType)i] = 5; // -16 -> 14
                 }
                 else if (Flags.HAS_FLAG(characterFlag, f3))
                 {
                     //alcohol
-                    specifities.idealStats[(IngredientType)i] = -40; // 15 -> 100
+                    _specifities.idealStats[(IngredientType)i] = -40; // 15 -> 100
                 }
                 else if (Flags.HAS_FLAG(characterFlag, f4))
                 {
                     //Sparkling
 
-                    specifities.idealStats[(IngredientType)i] = -10; // 15 -> 100
+                    _specifities.idealStats[(IngredientType)i] = -10; // 15 -> 100
                 }
                 offset += 4;
                 int val = (int)_currentWhoIsIt;
@@ -282,23 +287,23 @@ public class CharacterBehaviour : MonoBehaviour
                 if (Flags.HAS_FLAG(characterFlag, f1))
                 {
                     //temperature
-                    specifities.idealStats[(IngredientType)i] = -42; // -50 -> 50
+                    _specifities.idealStats[(IngredientType)i] = -42; // -50 -> 50
                 }
                 else if (Flags.HAS_FLAG(characterFlag, f2))
                 {
                     //Sweet
-                    specifities.idealStats[(IngredientType)i] = 25; // -16 -> 14
+                    _specifities.idealStats[(IngredientType)i] = 25; // -16 -> 14
                 }
                 else if (Flags.HAS_FLAG(characterFlag, f3))
                 {
                     //alcohol
-                    specifities.idealStats[(IngredientType)i] = -30; // 15 -> 100
+                    _specifities.idealStats[(IngredientType)i] = -30; // 15 -> 100
                 }
                 else if (Flags.HAS_FLAG(characterFlag, f4))
                 {
                     //Sparkling
 
-                    specifities.idealStats[(IngredientType)i] = 40; // 15 -> 100
+                    _specifities.idealStats[(IngredientType)i] = 40; // 15 -> 100
                 }
                 offset += 4;
                 int val = (int)_currentWhoIsIt;
@@ -312,36 +317,51 @@ public class CharacterBehaviour : MonoBehaviour
 
     public void ReceiveShaker(int priceToPay)
     {
-        isWaitingForDrink = false;
-        if (priceToPay < offerPrice - (offerPrice * 0.25))
+        _isWaitingForDrink = false;
+
+        if (priceToPay < _offerPrice - (_offerPrice * 0.25))
         {
             gameObject.GetComponent<Animator>().SetBool("ServedPASKONTANT", true);
-            DialogueHandler.GetComponent<DialogueScript>().SetDialogueContentWithState(DialogueOption.PasContant);
+            _dialogueHandler.GetComponent<DialogueScript>().SetDialogueContentWithState(DialogueOption.PasContant);
         }
-        else if (priceToPay > offerPrice + (offerPrice * 0.25))
+        else if (priceToPay > _offerPrice + (_offerPrice * 0.25))
         {
             gameObject.GetComponent<Animator>().SetBool("ServedHappy", true);
-            DialogueHandler.GetComponent<DialogueScript>().SetDialogueContentWithState(DialogueOption.Content);
+            _dialogueHandler.GetComponent<DialogueScript>().SetDialogueContentWithState(DialogueOption.Content);
         }
         else
         {
             gameObject.GetComponent<Animator>().SetBool("ServedNeutral", true);
-            DialogueHandler.GetComponent<DialogueScript>().SetDialogueContentWithState(DialogueOption.MidTier);
+            _dialogueHandler.GetComponent<DialogueScript>().SetDialogueContentWithState(DialogueOption.MidTier);
         }
-        DialogueHandler.GetComponent<DialogueScript>().StartTempDialogue();
+
+        _acceptButton.SetActive(false);
+        _declineButton.SetActive(false);
+        _dialogPannel.SetActive(true);
+        _dialogueHandler.GetComponent<DialogueScript>().StartTempDialogue();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("WaitAtBar") && openOffer)
+        if (gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("WaitAtBar") && _openOffer)
         {
-            openOffer = false;
+            _openOffer = false;
             transform.GetChild(1).gameObject.SetActive(true);
-            DialogueHandler.SetActive(true);
-            DialogueHandler.GetComponent<DialogueScript>().SetDialogueContent("BONSOIR");
-            DialogueHandler.GetComponent<DialogueScript>().StartDialogue();
+            _dialogueHandler.SetActive(true);
+            _dialogueHandler.GetComponent<DialogueScript>().SetDialogueContent("BONSOIR");
+            _dialogueHandler.GetComponent<DialogueScript>().StartDialogue();
         }
-        
     }
+
+    #region Helpers
+    public bool IsWaitingForDrink()
+    {
+        return _isWaitingForDrink;
+    }
+
+    public CharacterSpe GetCharactersSpecifications()
+    {
+        return _specifities;
+    }
+    #endregion
 }

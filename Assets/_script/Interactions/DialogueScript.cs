@@ -13,22 +13,17 @@ public class DialogueScript : MonoBehaviour
 {
     private Animator m_Animator;
 
-    [SerializeField] GameObject Canva;
-    [SerializeField] GameObject TextBox;
-    [SerializeField] GameObject TextMesh;
+    [SerializeField] private GameObject _canvas;
+    [SerializeField] private GameObject _textBox;
+    [SerializeField] private GameObject _textMesh;
 
-    DialogueOption WishDialogueBox = DialogueOption.PasContant;
-    string TextToDisplay;
+    private DialogueOption _wishDialogueBox = DialogueOption.PasContant;
+    private string _textToDisplay;
 
     void Awake()
     {
         m_Animator = GetComponent<Animator>();
-        Canva.SetActive(false); // caché par défaut
-    }
-
-    void Update()
-    {
-
+        _canvas.SetActive(false);
     }
 
     public void CloseDialogue()
@@ -38,58 +33,58 @@ public class DialogueScript : MonoBehaviour
 
     public void StartDialogue()
     {
-        // on lance la séquence une seule fois
-        Canva.SetActive(true);
-        TextMesh.GetComponent<TextMeshProUGUI>().SetText(TextToDisplay);
-        TextBox.GetComponent<Animator>().SetBool("Open", true);
-        TextMesh.GetComponent<Animator>().SetBool("Open", true);
+        _canvas.SetActive(true);
+
+        _textMesh.GetComponent<TextMeshProUGUI>().SetText(_textToDisplay);
+        _textBox.GetComponent<Animator>().SetBool("Open", true);
+        _textMesh.GetComponent<Animator>().SetBool("Open", true);
     }
 
     public void StartTempDialogue()
     {
-        // on lance la séquence une seule fois
-        Canva.SetActive(true);
-        TextMesh.GetComponent<TextMeshProUGUI>().SetText(TextToDisplay);
-        TextBox.GetComponent<Animator>().SetBool("Open", true);
-        TextMesh.GetComponent<Animator>().SetBool("Open", true);
+        _canvas.SetActive(true);
+
+        _textMesh.GetComponent<TextMeshProUGUI>().SetText(_textToDisplay);
+        _textBox.GetComponent<Animator>().SetBool("Open", true);
+        _textMesh.GetComponent<Animator>().SetBool("Open", true);
         StartCoroutine(ShowDialogueSequence(1.5f));
     }
 
     public void SetDialogueContent(string content)
     {
-        TextToDisplay = content;
+        _textToDisplay = content;
     }
 
     public void SetDialogueContentWithState(DialogueOption clientState)
     {
-        WishDialogueBox = clientState;
+        _wishDialogueBox = clientState;
 
-        switch (WishDialogueBox)
+        switch (_wishDialogueBox)
         {
             case DialogueOption.PasContant:
-                TextToDisplay = "Berk ! C'est vraiment mauvais";
+                _textToDisplay = "Berk ! C'est vraiment mauvais";
                 break;
             case DialogueOption.MidTier:
-                TextToDisplay = "Ça pourrait être mieux, je reviendrai quand je serai bourrée.";
+                _textToDisplay = "Ça pourrait être mieux, je reviendrai quand je serai bourrée.";
                 break;
             case DialogueOption.Content:
-                TextToDisplay = "Meilleur que si j'étais bourrée.";
+                _textToDisplay = "Meilleur que si j'étais bourrée.";
                 break;
         }
     }
 
     private IEnumerator ShowDialogueSequence(float tempAnim = 0.0f)
     {
-        yield return new WaitForSeconds(0.0f+tempAnim);
+        yield return new WaitForSeconds(tempAnim);
 
-        TextBox.GetComponent<Animator>().SetBool("Close", true);
-        TextMesh.GetComponent<Animator>().SetBool("Close", true);
+        _textBox.GetComponent<Animator>().SetBool("Close", true);
+        _textMesh.GetComponent<Animator>().SetBool("Close", true);
 
-        TextBox.GetComponent<Animator>().SetBool("Open", false);
-        TextMesh.GetComponent<Animator>().SetBool("Open", false);
+        _textBox.GetComponent<Animator>().SetBool("Open", false);
+        _textMesh.GetComponent<Animator>().SetBool("Open", false);
 
         yield return new WaitForSeconds(1.5f); 
 
-        Canva.SetActive(false);
+        _canvas.SetActive(false);
     }
 }

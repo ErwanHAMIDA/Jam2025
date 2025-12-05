@@ -3,13 +3,11 @@ using UnityEngine;
 
 public class StatsDisplay : MonoBehaviour
 {
-    GameObject Stat1;
-    GameObject Stat2;
-    GameObject Stat3;
-    GameObject Stat4;
+    private GameObject Stat1;
+    private GameObject Stat2;
+    private GameObject Stat3;
+    private GameObject Stat4;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Stat1 = transform.GetChild(0).gameObject;
@@ -55,11 +53,5 @@ public class StatsDisplay : MonoBehaviour
                     break;
             }
         }
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
