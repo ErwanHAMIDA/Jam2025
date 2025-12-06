@@ -2,25 +2,35 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using TMPro;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private string _sceneName;
+    [SerializeField] private GameObject _continueButton;
 
-    public void StartGame()
+    private void Start()
     {
-        if (string.IsNullOrEmpty(_sceneName))
-        {
-            Debug.LogError($"[SceneLoader] Aucun nom de scène défini sur {gameObject.name}. Assure-toi d'avoir assigné une scène dans l'inspecteur.");
-            return;
-        }
+        if (SaveManager.Instance.IsSaveExist())
+            _continueButton.GetComponent<Button>().interactable = true;
+        else 
+            _continueButton.GetComponent<Button>().interactable = false;
+    }
 
-        if (!Application.CanStreamedLevelBeLoaded(_sceneName))
-        {
-            Debug.LogError($"[SceneLoader] La scène \"{_sceneName}\" ne peut pas être chargée. Vérifie qu'elle est bien ajoutée dans File > Build Settings.");
-            return;
-        }
+    public void StartNewGame()
+    {
+        string inputText = GameObject.FindAnyObjectByType<TMP_InputField>().text;
 
+        if (inputText == "") return;
+
+        SaveManager.Instance.DeleteData();
+        GameData.Instance.SetInputBarName(GameObject.FindAnyObjectByType<TMP_InputField>().text);
+        SceneManager.LoadScene(_sceneName);
+    }
+
+    public void ContinueGame()
+    {
         SceneManager.LoadScene(_sceneName);
     }
 

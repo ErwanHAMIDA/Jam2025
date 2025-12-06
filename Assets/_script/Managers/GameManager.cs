@@ -50,6 +50,11 @@ public class GameManager : MonoBehaviour
         SpawnNewClient();
     }
 
+    public void SaveGame()
+    {
+        SaveManager.Instance.Save();
+    }
+
     public void SpawnNewClient()
     {
         GameObject newCharacter = Instantiate(_characterPrefab);

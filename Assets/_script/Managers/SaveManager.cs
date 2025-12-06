@@ -1,12 +1,10 @@
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.IO;
-using TMPro;
 using UnityEngine;
+
 public class SaveManager : MonoBehaviour
 {
     private string _savePath;
-
     public static SaveManager Instance { get; private set; }
 
     private void Awake()
@@ -14,27 +12,23 @@ public class SaveManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            // Initialiser le chemin immédiatement dans Awake
+            _savePath = Path.Combine(Application.persistentDataPath, "save.json");
+
+            Debug.Log($"SaveManager initialisé. Chemin : {_savePath}");
         }
         else
         {
             Destroy(gameObject);
-            return;
         }
-
-        DontDestroyOnLoad(gameObject);
-    }
-
-    void Start()
-    {
-        _savePath = Application.persistentDataPath + "/save.json";
     }
 
     public void Save()
     {
         string json = JsonConvert.SerializeObject(GameData.Instance, Formatting.Indented);
         File.WriteAllText(_savePath, json);
-
-        Debug.Log($"Sauvegarde réussie : {_savePath}");
     }
 
     public GameData LoadData()
@@ -46,5 +40,16 @@ public class SaveManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void DeleteData()
+    {
+        if (File.Exists(_savePath))
+            File.Delete(_savePath);
+    }
+
+    public bool IsSaveExist()
+    {
+        return File.Exists(_savePath);
     }
 }

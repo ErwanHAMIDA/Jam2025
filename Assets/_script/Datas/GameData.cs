@@ -10,6 +10,7 @@ public class GameData
     [JsonProperty] public string Name { get; private set; }
 
     private UITextManager _uiTextManager;
+    private string _inputBarName;
 
     public void SetUIManager(UITextManager uiManager)
     {
@@ -26,7 +27,7 @@ public class GameData
     public void SetDataByDefault()
     {
         SetGold(1000);
-        SetName("Kiwistiti");
+        SetName(_inputBarName);
         _uiTextManager.UpdateUIText();
     }
 
@@ -46,5 +47,10 @@ public class GameData
     {
         Name = name;
         _uiTextManager.UpdateUIText();
+    }
+
+    public void SetInputBarName(string name)
+    {
+        _inputBarName = name;
     }
 }
