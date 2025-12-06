@@ -43,6 +43,9 @@ public class Shop : MonoBehaviour
 
     void CreateShop()
     {
+        foreach (Transform child in _prefabParent.transform)
+            Destroy(child.gameObject);
+
         foreach (var item in _buyableItems)
         {
             GameObject newButton = Instantiate(_buttonPrefab, _prefabParent.transform);
@@ -64,7 +67,9 @@ public class Shop : MonoBehaviour
     }
    public void Buy(Item item)
    {
-        GameData.Gold -= item._price;
+        if (GameData.Instance.Gold - item._price < 0) return;
+
+        GameData.Instance.AddGold(-item._price);
         Debug.Log("Buy :" + item._name);
    }
 }

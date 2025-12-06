@@ -118,7 +118,7 @@ public class CharacterBehaviour : MonoBehaviour
    
     public void AcceptOffer()
     {
-        GameData.Gold -= _offerPrice;
+        GameData.Instance.AddGold(-_offerPrice);
 
         _dialogueHandler.GetComponent<DialogueScript>().CloseDialogue();
 
