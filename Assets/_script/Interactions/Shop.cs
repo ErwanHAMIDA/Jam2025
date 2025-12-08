@@ -22,7 +22,6 @@ public class Shop : MonoBehaviour
     [SerializeField] GameObject _buttonPrefab;
     [SerializeField] GameObject _prefabParent;
     [SerializeField] GameObject _shopMenu;
-    [SerializeField] GameObject _shopBackground;
     [SerializeField] List<Sprite> _sprites;
     [SerializeField] AudioClip _clip;
 
@@ -63,7 +62,6 @@ public class Shop : MonoBehaviour
     public void Toggle()
     {
         _shopMenu.SetActive(!_shopMenu.activeSelf);
-        _shopBackground.SetActive(!_shopBackground.activeSelf);
     }
    public void Buy(Item item)
    {
