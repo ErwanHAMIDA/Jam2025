@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        GameData loaded = SaveManager.Instance.LoadData();
+        GameData loaded = SaveManager.Instance.LoadSlotData(GameData.Instance.slotID);
 
         if (loaded != null)
         {
