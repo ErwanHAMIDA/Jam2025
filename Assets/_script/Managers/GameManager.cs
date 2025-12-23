@@ -6,6 +6,12 @@ using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("======| Game Settings |======")]
+    [Header("")]
+    [SerializeField] private int _gold;
+    [SerializeField] private Ingredient[] _startedIngredients;
+    [SerializeField] private int[] _startedIngredientQuantity;
+
     [Header("======| Camera |======")]
     [Header("")]
     [SerializeField] private Camera _worldCam;
@@ -44,9 +50,10 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            GameData.Instance.SetDataByDefault();
+            GameData.Instance.SetDataByDefault(_gold, _startedIngredients, _startedIngredientQuantity);
         }
 
+        //SetupInventory();
         SpawnNewClient();
     }
 
