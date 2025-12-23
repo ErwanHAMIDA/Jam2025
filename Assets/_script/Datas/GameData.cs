@@ -30,6 +30,7 @@ public class GameData
     {
         SetGold(loaded.Gold);
         SetName(loaded.Name);
+        SetInventory(loaded.Inventory);
     }
 
     public void SetDataByDefault(int gold , Ingredient[] ingredients, int[] quantity)
@@ -69,5 +70,10 @@ public class GameData
     public void SetInputBarName(string name)
     {
         _inputBarName = name;
+    }
+
+    public void SetInventory(Dictionary<Ingredient, int> inventory)
+    {
+        Inventory = inventory;
     }
 }
