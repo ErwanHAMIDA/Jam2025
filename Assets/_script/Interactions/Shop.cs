@@ -23,7 +23,6 @@ public class Shop : MonoBehaviour
     [SerializeField] GameObject _prefabParent;
     [SerializeField] GameObject _shopMenu;
     [SerializeField] List<Sprite> _sprites;
-    [SerializeField] AudioClip _clip;
 
     List<Item> _buyableItems = new List<Item>();
     void Start()
