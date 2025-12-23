@@ -15,6 +15,11 @@ public class GameData
     private UITextManager _uiTextManager;
     private string _inputBarName;
 
+    public GameData()
+    {
+        Inventory = new Dictionary<Ingredient, int>();
+    }
+
     public void SetUIManager(UITextManager uiManager)
     {
         _uiTextManager = uiManager;

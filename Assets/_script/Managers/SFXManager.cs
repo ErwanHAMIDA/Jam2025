@@ -52,8 +52,8 @@ public class SFXManager : MonoBehaviour
 
     private void OnDisable()
     {
-        _inputSystemModule.move.action.performed -= OnNavigate;
-        _inputSystemModule.submit.action.performed -= OnSubmit;
+        //_inputSystemModule.move.action.performed -= OnNavigate;
+        //_inputSystemModule.submit.action.performed -= OnSubmit;
     }
 
     private void OnNavigate(InputAction.CallbackContext ctx)
