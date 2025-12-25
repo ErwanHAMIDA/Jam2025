@@ -25,7 +25,7 @@ public class SavingLayout : MonoBehaviour
                 GameObject iSaveSlot = gameObject.transform.GetChild(i).gameObject;
                 iSaveSlot.transform.GetChild(0).gameObject.SetActive(true); // DataLoaded
                 iSaveSlot.transform.GetChild(1).gameObject.SetActive(false); // EMPTY
-                iSaveSlot.transform.GetChild(0).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText("Name : " + _loadedDatas.savingSlot[i].Name);
+                iSaveSlot.transform.GetChild(0).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(_loadedDatas.savingSlot[i].Name);
                 iSaveSlot.transform.GetChild(0).GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().SetText("Gold : " + _loadedDatas.savingSlot[i].Gold);
             }
         }
