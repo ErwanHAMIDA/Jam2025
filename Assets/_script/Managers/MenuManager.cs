@@ -29,6 +29,24 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(_sceneName);
     }
 
+    public void CreateNewGame(int slotID)
+    {
+        string inputText = GameObject.FindAnyObjectByType<TMP_InputField>().text;
+
+        if (inputText == "") return;
+
+        GameData.Instance.slotID = slotID;
+        GameData.Instance.SetInputBarName(GameObject.FindAnyObjectByType<TMP_InputField>().text);
+        SceneManager.LoadScene(_sceneName);
+    }
+
+    public void ContinueSlectedSlot(int slotID)
+    {
+        GameData.Instance.CopyFrom(SaveManager.Instance.LoadSlotData(slotID));
+        SceneManager.LoadScene(_sceneName);
+    }
+
+
     public void ContinueGame()
     {
         SceneManager.LoadScene(_sceneName);

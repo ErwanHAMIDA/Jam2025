@@ -1,9 +1,19 @@
 using Newtonsoft.Json;
+using System;
 using System.IO;
 using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
+    public class SavingStruct
+    {
+        const int SIZE = 4;
+        public GameData[] savingSlot;
+
+        public SavingStruct() { savingSlot = new GameData[SIZE]; }
+    }
+
+
     private string _savePath;
     public static SaveManager Instance { get; private set; }
 
@@ -27,8 +37,31 @@ public class SaveManager : MonoBehaviour
 
     public void Save()
     {
-        string json = JsonConvert.SerializeObject(GameData.Instance, Formatting.Indented);
+        SavingStruct currentSavedData = LoadAllData();
+
+        if (currentSavedData == null) currentSavedData = new SavingStruct();
+        currentSavedData.savingSlot[GameData.Instance.slotID] = GameData.Instance;
+        string json = JsonConvert.SerializeObject(currentSavedData, Formatting.Indented);
         File.WriteAllText(_savePath, json);
+    }
+
+    public SavingStruct LoadAllData()
+    {
+        if (File.Exists(_savePath))
+        {
+            string json = File.ReadAllText(_savePath);
+            return JsonConvert.DeserializeObject<SavingStruct>(json);
+        }
+
+        return null;
+    }
+
+    public GameData LoadSlotData(int slotID)
+    {
+        SavingStruct LoadedSlot = LoadAllData();
+        if (LoadedSlot == null)
+            return null;
+        return LoadedSlot.savingSlot[slotID];
     }
 
     public GameData LoadData()
@@ -40,6 +73,17 @@ public class SaveManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void DeleteSlotData(int slotID)
+    {
+        SavingStruct savedData = LoadAllData();
+        if (savedData == null) return;
+        File.Delete(_savePath);
+
+        savedData.savingSlot[slotID] = null;
+        string json = JsonConvert.SerializeObject(savedData, Formatting.Indented);
+        File.WriteAllText(_savePath, json);
     }
 
     public void DeleteData()

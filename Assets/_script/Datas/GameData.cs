@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameData
 {
     private static GameData _instance;
+
+    public int slotID { get; set; }
     public static GameData Instance => _instance ??= new GameData();
     [JsonProperty] public int Gold { get; private set; }
     [JsonProperty] public string Name { get; private set; }
@@ -22,6 +24,7 @@ public class GameData
     {
         SetGold(loaded.Gold);
         SetName(loaded.Name);
+        slotID = loaded.slotID;
     }
 
     public void SetDataByDefault()
