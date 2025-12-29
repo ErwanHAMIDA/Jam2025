@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
+  m_Name: GlaceCube
+  m_EditorClassIdentifier: 
+  _ingredientId: GlaceCube
+  _ingredientName: GlaceCube
+  _ingredientTexture: {fileID: -4528831821242572118, guid: 000d9ddd37dcb2d4d94f6b619c106878, type: 3}
+  _description: GlaceCube

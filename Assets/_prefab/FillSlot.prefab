@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4528831821242572118, guid: 000d9ddd37dcb2d4d94f6b619c106878, type: 3}
+  m_Sprite: {fileID: -7245966700060494964, guid: 9c7eb929d7616be4387ff95d23c81d46, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -201,7 +201,7 @@ MonoBehaviour:
         m_MethodName: InstantiateIngredient
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 590284431653865481, guid: 54a86726b38cb0b4491f820e4e878d03, type: 3}
+          m_ObjectArgument: {fileID: 590284431653865481, guid: dbab8024e3a68644c81342e44ef6e103, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0

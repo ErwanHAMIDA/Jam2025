@@ -119,16 +119,4 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6101831230961388671}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2994417003506325818, guid: 479edfc7c41fc4d4eb4b9601317afb40, type: 3}
-        m_TargetAssemblyTypeName: SpawnIngredient, Assembly-CSharp
-        m_MethodName: InstantiateIngredient
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 590284431653865481, guid: 2ff9567ccf4cf9043a42586fef57bd51, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

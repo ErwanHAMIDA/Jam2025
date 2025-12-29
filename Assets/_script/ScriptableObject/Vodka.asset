@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
+  m_Name: Vodka
+  m_EditorClassIdentifier: 
+  _ingredientId: Vodka
+  _ingredientName: Vodka
+  _ingredientTexture: {fileID: -4561377285297849968, guid: 23cefcd3d8a24b748a425757a35890e2, type: 3}
+  _description: Vodka
