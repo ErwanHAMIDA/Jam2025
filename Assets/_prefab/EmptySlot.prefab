@@ -120,7 +120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2994417003506325818, guid: 479edfc7c41fc4d4eb4b9601317afb40, type: 3}
         m_TargetAssemblyTypeName: SpawnIngredient, Assembly-CSharp
         m_MethodName: InstantiateIngredient
         m_Mode: 2
