@@ -93,26 +93,25 @@ public class PauseMenuManager : MonoBehaviour
             canvasGroup.blocksRaycasts = false;
         }
 
-        Vector2 startPos = new Vector2(targetPos.x, 0f);
-        float elapsed = 0f;
+        Vector2 startPos = rect.anchoredPosition;
+        float elapsed = 0.0f;
 
         while (elapsed < duration)
         {
             elapsed += Time.unscaledDeltaTime;
             float time = Mathf.Clamp01(elapsed / duration);
 
-            rect.anchoredPosition = new Vector2(targetPos.x, Mathf.Lerp(startPos.y, targetPos.y, time));
-            canvasGroup.alpha = Mathf.Lerp(0f, 1f, time);
+            rect.anchoredPosition = Vector2.Lerp(startPos, targetPos, time);
+            canvasGroup.alpha = Mathf.Lerp(0.0f, 1.0f, time);
 
             yield return null;
         }
 
         rect.anchoredPosition = targetPos;
-        canvasGroup.alpha = 1f;
+        canvasGroup.alpha = 1.0f;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
     }
-
 
     private IEnumerator MoveAndFadeOut(Button button, float duration)
     {
@@ -121,13 +120,13 @@ public class PauseMenuManager : MonoBehaviour
         if (canvasGroup == null)
         {
             canvasGroup = button.gameObject.AddComponent<CanvasGroup>();
-            canvasGroup.alpha = 1.0f;
+            canvasGroup.alpha = 0.0f;
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
         }
 
         Vector2 startPos = rect.anchoredPosition;
-        Vector2 targetPos = new Vector2(startPos.x, 0f);
+        Vector2 targetPos = new Vector2(0.0f, 0.0f);
         float elapsed = 0f;
 
         while (elapsed < duration)
@@ -135,18 +134,17 @@ public class PauseMenuManager : MonoBehaviour
             elapsed += Time.unscaledDeltaTime;
             float time = Mathf.Clamp01(elapsed / duration);
 
-            rect.anchoredPosition = new Vector2(startPos.x, Mathf.Lerp(startPos.y, targetPos.y, time));
-            canvasGroup.alpha = Mathf.Lerp(1f, 0f, time);
+            rect.anchoredPosition = Vector2.Lerp(startPos, targetPos, time);
+            canvasGroup.alpha = Mathf.Lerp(1.0f, 0.0f, time);
 
             yield return null;
         }
 
         rect.anchoredPosition = targetPos;
-        canvasGroup.alpha = 0f;
+        canvasGroup.alpha = 0.0f;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
     }
-
 
     private void AnimateButtonSpawn(int index)
     {
