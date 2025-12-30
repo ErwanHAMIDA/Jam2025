@@ -8,6 +8,7 @@ public class StockBarName : MonoBehaviour
 
     public void ReadInput()
     {
+        _inputField = GameObject.FindAnyObjectByType<TMP_InputField>();
         _barName = _inputField.text;
         Debug.Log("Input: " + _barName);
     }
