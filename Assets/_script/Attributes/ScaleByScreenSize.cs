@@ -3,82 +3,63 @@ using UnityEngine;
 
 public class ScaleByScreenSize : MonoBehaviour
 {
-    private Camera cam;
-
-    [Header("Reference Camera Settings")]
+    [Header("Reference Camera (design-time)")]
     public float referenceOrthoSize = 5f;
     public float referenceAspect = 16f / 9f;
 
-    private float refCamWidth;
-    private float refCamHeight;
+    private Camera cam;
 
     private readonly List<Transform> children = new();
-    private readonly List<Vector3> viewportPositions = new();
-    private readonly List<Vector3> originalScales = new();
-
-    private float lastAspect;
-    private float lastOrthoSize;
+    private readonly List<Vector3> referenceViewportPositions = new();
+    private readonly List<float> referenceDepths = new();
 
     void Start()
     {
         cam = Camera.main;
 
-        refCamHeight = 2f * referenceOrthoSize;
-        refCamWidth = refCamHeight * referenceAspect;
+        float refHeight = 2f * referenceOrthoSize;
+        float refWidth = refHeight * referenceAspect;
 
         foreach (Transform child in transform)
         {
             children.Add(child);
 
-            viewportPositions.Add(
-                cam.WorldToViewportPoint(child.position)
-            );
-
-            originalScales.Add(child.localScale);
+            Vector3 refViewport = WorldToReferenceViewport(child.position);
+            referenceViewportPositions.Add(refViewport);
+            referenceDepths.Add(refViewport.z);
         }
 
-        lastAspect = cam.aspect;
-        lastOrthoSize = cam.orthographicSize;
-
-        ApplyScaling();
-    }
-
-    void Update()
-    {
-        if (Mathf.Approximately(cam.aspect, lastAspect) &&
-            Mathf.Approximately(cam.orthographicSize, lastOrthoSize))
-            return;
-
-        lastAspect = cam.aspect;
-        lastOrthoSize = cam.orthographicSize;
-
-        ApplyScaling();
-    }
-
-    void ApplyScaling()
-    {
         float currentCamHeight = 2f * cam.orthographicSize;
         float currentCamWidth = currentCamHeight * cam.aspect;
 
-        float scaleX = currentCamWidth / refCamWidth;
-        float scaleY = currentCamHeight / refCamHeight;
+        float scaleX = currentCamWidth / (2f * referenceOrthoSize * referenceAspect);
+        float scaleY = currentCamHeight / (2f * referenceOrthoSize);
 
         for (int i = 0; i < children.Count; i++)
         {
-            Vector3 vp = viewportPositions[i];
-            Vector3 worldPos = cam.ViewportToWorldPoint(
-                new Vector3(
-                    vp.x,
-                    vp.y,
-                    children[i].position.z - cam.transform.position.z
-                )
+            Vector3 vp = referenceViewportPositions[i];
+            children[i].position = cam.ViewportToWorldPoint(
+                new Vector3(vp.x, vp.y, referenceDepths[i])
             );
-            children[i].position = worldPos;
 
-            children[i].localScale = Vector3.Scale(
-                originalScales[i],
-                new Vector3(scaleX, scaleY, 1f)
-            );
+            children[i].localScale = new Vector3(scaleX, scaleY, 1f);
         }
+    }
+
+    void LateUpdate()
+    {
+        
+
+    }
+
+    Vector3 WorldToReferenceViewport(Vector3 worldPos)
+    {
+        float refHeight = 2f * referenceOrthoSize;
+        float refWidth = refHeight * referenceAspect;
+
+        float vx = (worldPos.x / refWidth) + 0.5f;
+        float vy = (worldPos.y / refHeight) + 0.5f;
+
+        return new Vector3(vx, vy, worldPos.z - cam.transform.position.z);
     }
 }
