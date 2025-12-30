@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,24 +16,43 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip _walkAudio;
     [SerializeField] private AudioClip _payAudio;
 
-    [Header("======| Text |======")]
-    [Header("")]
-    [SerializeField] private TMP_Text _goldTextCount;
-
     [Header("======| Others |======")]
     [Header("")]
     [SerializeField] private GameObject _characterPrefab;
     [SerializeField] private GameObject _physicEnvironmentHolder;
     [SerializeField] private Shaker _shaker;
 
+    [SerializeField] private UITextManager uiTextManager;
+
     private GameObject _currentCharacter;
     private CharacterBehaviour _characterBehaviour;
 
+    private GameData _gameData;
+
+    private void Awake()
+    {
+        GameData.Instance.SetUIManager(uiTextManager);
+    }
+
     void Start()
     {
-        GameData.Gold = 1000;
+        GameData loaded = SaveManager.Instance.LoadData();
+
+        if (loaded != null)
+        {
+            GameData.Instance.CopyFrom(loaded);
+        }
+        else
+        {
+            GameData.Instance.SetDataByDefault();
+        }
 
         SpawnNewClient();
+    }
+
+    public void SaveGame()
+    {
+        SaveManager.Instance.Save();
     }
 
     public void SpawnNewClient()
@@ -68,16 +88,11 @@ public class GameManager : MonoBehaviour
         price = (int)GetComponent<Gambling>().CalculatePayment(ShakerStats);
         _characterBehaviour.ReceiveShaker(price);
 
-        UpdateGold(price);
+        GameData.Instance.AddGold(price);
 
         yield return new WaitForSeconds(3.0f);
         SpawnNewClient();
     }
 
-    private void UpdateGold(int amount)
-    {
-        GameData.Gold += amount;
-
-        _goldTextCount.text = GameData.Gold.ToString();
-    }
+    
 }

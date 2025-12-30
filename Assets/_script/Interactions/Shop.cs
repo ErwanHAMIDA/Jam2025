@@ -22,7 +22,6 @@ public class Shop : MonoBehaviour
     [SerializeField] GameObject _buttonPrefab;
     [SerializeField] GameObject _prefabParent;
     [SerializeField] GameObject _shopMenu;
-    [SerializeField] GameObject _shopBackground;
     [SerializeField] List<Sprite> _sprites;
     [SerializeField] AudioClip _clip;
 
@@ -43,6 +42,9 @@ public class Shop : MonoBehaviour
 
     void CreateShop()
     {
+        foreach (Transform child in _prefabParent.transform)
+            Destroy(child.gameObject);
+
         foreach (var item in _buyableItems)
         {
             GameObject newButton = Instantiate(_buttonPrefab, _prefabParent.transform);
@@ -60,11 +62,12 @@ public class Shop : MonoBehaviour
     public void Toggle()
     {
         _shopMenu.SetActive(!_shopMenu.activeSelf);
-        _shopBackground.SetActive(!_shopBackground.activeSelf);
     }
    public void Buy(Item item)
    {
-        GameData.Gold -= item._price;
+        if (GameData.Instance.Gold - item._price < 0) return;
+
+        GameData.Instance.AddGold(-item._price);
         Debug.Log("Buy :" + item._name);
    }
 }
