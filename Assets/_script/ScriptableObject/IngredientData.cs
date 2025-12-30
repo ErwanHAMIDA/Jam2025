@@ -6,6 +6,7 @@ public class IngredientData : ScriptableObject
     [Header("Identification")]
     public string _ingredientId;   // Unique id if needed for save/lookup.
     public string _ingredientName; // Display name.
+    public GameObject Prefab;
 
     [Tooltip("Sprite of the card front.")]
     public Sprite _ingredientTexture;

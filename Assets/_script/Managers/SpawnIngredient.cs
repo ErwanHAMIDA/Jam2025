@@ -5,15 +5,15 @@ public class SpawnIngredient : MonoBehaviour
     [SerializeField] private Camera worldCamera;
     [SerializeField] private GameObject _spawnPoint;
     [SerializeField] private Vector3 _spawnCoord;
-    
-    public void InstantiateIngredient(GameObject ingredient)
+
+    public void InstantiateIngredient(GameObject ingredientPrefab)
     {
-        //Vector3 worldPos = worldCamera.ScreenToWorldPoint(_spawnPoint.transform.position + _offset);
+        Vector3 spawnPosition = worldCamera.ScreenToWorldPoint(Input.mousePosition);
+        spawnPosition.z = 0f;
 
-        _spawnCoord.z = 0f;
-
-        GameObject newIngredient = Instantiate(ingredient, _spawnCoord, Quaternion.identity);
+        GameObject newIngredient = Instantiate(ingredientPrefab, spawnPosition, Quaternion.identity);
         newIngredient.tag = "Ingredient";
         newIngredient.AddComponent<IngredientInShaker>();
     }
+
 }

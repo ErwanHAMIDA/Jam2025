@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
-  m_Name: Poudre a canon
+  m_Name: Tomate
   m_EditorClassIdentifier: 
-  _ingredientId: Poudre a canon
-  _ingredientName: Poudre a canon
-  _ingredientTexture: {fileID: 2500505285940807766, guid: b3f82f3b989d87d4087c5c73d0613962, type: 3}
-  _description: Poudre a canon
+  _ingredientId: Tomate
+  _ingredientName: Tomate
+  Prefab: {fileID: 590284431653865481, guid: b99082aa47cd82f4aaf953bfd3e150e1, type: 3}
+  _ingredientTexture: {fileID: 4712890942849353665, guid: 5764b6a068f4aea40982f75d44bfdd65, type: 3}
+  _description: Tomate

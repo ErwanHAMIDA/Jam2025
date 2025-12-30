@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
-  m_Name: Chantilly
+  m_Name: Menthe
   m_EditorClassIdentifier: 
-  _ingredientId: Chantilly
-  _ingredientName: Chantilly
-  _ingredientTexture: {fileID: -6940784977544835860, guid: 2f610b7bc0ab1dc4f8f891ca8fd34168, type: 3}
-  _description: Chantilly
+  _ingredientId: Menthe
+  _ingredientName: Menthe
+  Prefab: {fileID: 590284431653865481, guid: 5e04569d5edfc8f4896fb2bb283b4168, type: 3}
+  _ingredientTexture: {fileID: 341826553180655283, guid: 2442efec7fc50f841a8f5460e6755e3d, type: 3}
+  _description: Menthe

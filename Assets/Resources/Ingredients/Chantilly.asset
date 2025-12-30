@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
-  m_Name: Poivre
+  m_Name: Chantilly
   m_EditorClassIdentifier: 
-  _ingredientId: Poivre
-  _ingredientName: Poivre
-  _ingredientTexture: {fileID: 8452703584861095095, guid: 59df50355fa75b444acd1e163900b6ee, type: 3}
-  _description: Poivre
+  _ingredientId: Chantilly
+  _ingredientName: Chantilly
+  Prefab: {fileID: 590284431653865481, guid: e19405edb2bb05f41a33bf74d85c9ce3, type: 3}
+  _ingredientTexture: {fileID: -6940784977544835860, guid: 2f610b7bc0ab1dc4f8f891ca8fd34168, type: 3}
+  _description: Chantilly

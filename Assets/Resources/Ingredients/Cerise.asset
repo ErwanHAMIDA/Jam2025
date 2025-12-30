@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
-  m_Name: Pasteque
+  m_Name: Cerise
   m_EditorClassIdentifier: 
-  _ingredientId: Pasteque
-  _ingredientName: Pasteque
-  _ingredientTexture: {fileID: 380751516834680934, guid: 136eebb10dc9b8e4986cf06b2034099f, type: 3}
-  _description: Pasteque
+  _ingredientId: Cerise
+  _ingredientName: Cerise
+  Prefab: {fileID: 590284431653865481, guid: 4d8192c96954ab040a2a73c628b373d3, type: 3}
+  _ingredientTexture: {fileID: 4850593837165657539, guid: 5851fc2b9a823af4d87e77be898b7a19, type: 3}
+  _description: Cerise

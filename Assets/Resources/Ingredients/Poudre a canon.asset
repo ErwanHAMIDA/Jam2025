@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
-  m_Name: Acide
+  m_Name: Poudre a canon
   m_EditorClassIdentifier: 
-  _ingredientId: Acide
-  _ingredientName: Acide
-  _ingredientTexture: {fileID: -3522006566239786595, guid: 085e3ee0663848349bf32a2e8ab2a1e4, type: 3}
-  _description: Acide
+  _ingredientId: Poudre a canon
+  _ingredientName: Poudre a canon
+  Prefab: {fileID: 590284431653865481, guid: 64177143fe5ec1b469f8b282339a26d5, type: 3}
+  _ingredientTexture: {fileID: 2500505285940807766, guid: b3f82f3b989d87d4087c5c73d0613962, type: 3}
+  _description: Poudre a canon

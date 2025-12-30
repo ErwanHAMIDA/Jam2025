@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
-  m_Name: Canne a sucre
+  m_Name: GlaceCube
   m_EditorClassIdentifier: 
-  _ingredientId: Canne a sucre
-  _ingredientName: Canne a sucre
-  _ingredientTexture: {fileID: 2964728875688461460, guid: 13eabf7d33154ae4eb25c048e0caa77f, type: 3}
-  _description: Canne a sucre
+  _ingredientId: GlaceCube
+  _ingredientName: GlaceCube
+  Prefab: {fileID: 590284431653865481, guid: 54a86726b38cb0b4491f820e4e878d03, type: 3}
+  _ingredientTexture: {fileID: -4528831821242572118, guid: 000d9ddd37dcb2d4d94f6b619c106878, type: 3}
+  _description: GlaceCube

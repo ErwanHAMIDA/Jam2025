@@ -1,8 +1,13 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
+
+[System.Serializable]
+public class SerializableInventoryItem
+{
+    public string IngredientId;
+    public int Quantity;
+}
 
 public class GameData
 {
@@ -10,14 +15,16 @@ public class GameData
     public static GameData Instance => _instance ??= new GameData();
     [JsonProperty] public int Gold { get; private set; }
     [JsonProperty] public string Name { get; private set; }
-    [JsonProperty] public Dictionary<Ingredient, int> Inventory { get; private set; }
+
+    [JsonIgnore]
+    public Dictionary<IngredientData, int> Inventory { get; private set; }
 
     private UITextManager _uiTextManager;
     private string _inputBarName;
 
     public GameData()
     {
-        Inventory = new Dictionary<Ingredient, int>();
+        Inventory = new Dictionary<IngredientData, int>();
     }
 
     public void SetUIManager(UITextManager uiManager)
@@ -26,7 +33,7 @@ public class GameData
         _uiTextManager.UpdateUIText();
     }
 
-    public void AddItem(Ingredient ingredient, int number)
+    public void AddItem(IngredientData ingredient, int number)
     {
         Inventory.Add(ingredient, number);
     }
@@ -38,19 +45,19 @@ public class GameData
         SetInventory(loaded.Inventory);
     }
 
-    public void SetDataByDefault(int gold , Ingredient[] ingredients, int[] quantity)
+    public void SetDataByDefault(int gold, IngredientData[] ingredients, int[] quantity)
     {
         if (ingredients.Length != quantity.Length)
-            throw new ArgumentOutOfRangeException("ingredients and quantity not the same count", nameof(ingredients.Length) + nameof(quantity.Length));
+            throw new ArgumentOutOfRangeException("ingredients and quantity not the same count");
 
         for (int i = 0; i < ingredients.Length; i++)
         {
-            AddItem(ingredients[i], quantity[i]);
+            if (ingredients[i] != null) // <-- Vérifie que l'ingrédient n'est pas null
+                AddItem(ingredients[i], quantity[i]);
         }
 
-        SetGold(1000);
+        SetGold(gold);
         SetName(_inputBarName);
-
         _uiTextManager.UpdateUIText();
     }
 
@@ -77,8 +84,9 @@ public class GameData
         _inputBarName = name;
     }
 
-    public void SetInventory(Dictionary<Ingredient, int> inventory)
+    public void SetInventory(Dictionary<IngredientData, int> inventory)
     {
-        Inventory = inventory;
+        Inventory = new Dictionary<IngredientData, int>(inventory);
     }
+
 }

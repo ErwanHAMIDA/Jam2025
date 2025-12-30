@@ -1,19 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("======| Game Settings |======")]
-    [Header("")]
-    [SerializeField] private int _gold;
-    [SerializeField] private Ingredient[] _startedIngredients;
-    [SerializeField] private int[] _startedIngredientQuantity;
-    [SerializeField] private int _inventoryCaseNumber = 20;
-
     [Header("======| Camera |======")]
     [Header("")]
     [SerializeField] private Camera _worldCam;
@@ -29,9 +20,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _characterPrefab;
     [SerializeField] private GameObject _physicEnvironmentHolder;
     [SerializeField] private Shaker _shaker;
-    [SerializeField] private GameObject _emptySlot;
-    [SerializeField] private GameObject _fillSlot;
-    [SerializeField] private GameObject _inventoryGrid;
 
     [SerializeField] private UITextManager uiTextManager;
 
@@ -47,32 +35,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        GameData loaded = SaveManager.Instance.LoadData();
-
-        if (loaded != null)
-        {
-            GameData.Instance.CopyFrom(loaded);
-        }
-        else
-        {
-            GameData.Instance.SetDataByDefault(_gold, _startedIngredients, _startedIngredientQuantity);
-        }
-
-        SetupInventory();
         SpawnNewClient();
-    }
-
-    private void SetupInventory()
-    {
-        int itemNumber = GameData.Instance.Inventory.Count;
-
-        for (int i = 0; i < _inventoryCaseNumber; i++)
-        {
-            if (i >= itemNumber)
-                Instantiate(_emptySlot, _inventoryGrid.transform);
-            else
-                Instantiate(_fillSlot,  _inventoryGrid.transform);
-        }
     }
 
     public void SaveGame()
@@ -118,6 +81,4 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         SpawnNewClient();
     }
-
-    
 }

@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
-  m_Name: Myrtille
+  m_Name: Poudre amande
   m_EditorClassIdentifier: 
-  _ingredientId: Myrtille
-  _ingredientName: Myrtille
-  _ingredientTexture: {fileID: -3517854847467642760, guid: 1bdfee7f355afa84995bf1950fd3587c, type: 3}
-  _description: Myrtille
+  _ingredientId: Poudre amande
+  _ingredientName: Poudre amande
+  Prefab: {fileID: 590284431653865481, guid: bf938e1f511ef524587a5afcd28071dc, type: 3}
+  _ingredientTexture: {fileID: 9023382424270390580, guid: 767a5d84fcaf3104a926aeff3995da98, type: 3}
+  _description: Poudre amande

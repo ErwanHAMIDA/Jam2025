@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
-  m_Name: Gasoline
+  m_Name: Orange
   m_EditorClassIdentifier: 
-  _ingredientId: Gasoline
-  _ingredientName: Gasoline
-  _ingredientTexture: {fileID: 541068108005011974, guid: 75ab7e078dd70494ca3d4ad7c7c11509, type: 3}
-  _description: Gasoline
+  _ingredientId: Orange
+  _ingredientName: Orange
+  Prefab: {fileID: 590284431653865481, guid: d892ac336c48f4840b884c7cf89b130a, type: 3}
+  _ingredientTexture: {fileID: -7962265800411467256, guid: 063b7044e05a0ec4e88c304f49b9543f, type: 3}
+  _description: Orange

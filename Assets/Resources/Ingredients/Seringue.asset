@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
-  m_Name: "Th\xE9"
+  m_Name: Seringue
   m_EditorClassIdentifier: 
-  _ingredientId: "Th\xE9"
-  _ingredientName: "Th\xE9"
-  _ingredientTexture: {fileID: 3878416414871784333, guid: 43397a2a0382aa24c8cb6f3e6a68dd3e, type: 3}
-  _description: "Th\xE9"
+  _ingredientId: Seringue
+  _ingredientName: Seringue
+  Prefab: {fileID: 590284431653865481, guid: cd14fffc04efa5b49a07c86db734d71e, type: 3}
+  _ingredientTexture: {fileID: 3007544534967890242, guid: d73c6e3355046bf4fa613c6bf153cebb, type: 3}
+  _description: Seringue

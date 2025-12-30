@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
-  m_Name: Orange
+  m_Name: Carotte
   m_EditorClassIdentifier: 
-  _ingredientId: Orange
-  _ingredientName: Orange
-  _ingredientTexture: {fileID: -7962265800411467256, guid: 063b7044e05a0ec4e88c304f49b9543f, type: 3}
-  _description: Orange
+  _ingredientId: Carotte
+  _ingredientName: Carotte
+  Prefab: {fileID: 590284431653865481, guid: 7e0d69782ba9e6f4d842f76169f32258, type: 3}
+  _ingredientTexture: {fileID: 3508434537970654134, guid: b0a0ff37992f12644abf94b9b2d05314, type: 3}
+  _description: Carotte

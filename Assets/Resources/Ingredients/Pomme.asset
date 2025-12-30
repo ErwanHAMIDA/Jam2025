@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
-  m_Name: Poudre amande
+  m_Name: Pomme
   m_EditorClassIdentifier: 
-  _ingredientId: Poudre amande
-  _ingredientName: Poudre amande
-  _ingredientTexture: {fileID: 9023382424270390580, guid: 767a5d84fcaf3104a926aeff3995da98, type: 3}
-  _description: Poudre amande
+  _ingredientId: Pomme
+  _ingredientName: Pomme
+  Prefab: {fileID: 590284431653865481, guid: 011768eda8ff98747bd36991077128d7, type: 3}
+  _ingredientTexture: {fileID: -3327064287969554200, guid: b54aa7cd0df60854b9668ba33911282a, type: 3}
+  _description: Pomme

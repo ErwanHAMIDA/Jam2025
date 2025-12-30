@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ingredientId: Frustration des hommes
   _ingredientName: Frustration des hommes
+  Prefab: {fileID: 590284431653865481, guid: dbab8024e3a68644c81342e44ef6e103, type: 3}
   _ingredientTexture: {fileID: -7709172112127723079, guid: 1d28c1adc6f61914aab5f05f694dd4b4, type: 3}
   _description: Frustration des hommes

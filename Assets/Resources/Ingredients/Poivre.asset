@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
-  m_Name: Vodka
+  m_Name: Poivre
   m_EditorClassIdentifier: 
-  _ingredientId: Vodka
-  _ingredientName: Vodka
-  _ingredientTexture: {fileID: -4561377285297849968, guid: 23cefcd3d8a24b748a425757a35890e2, type: 3}
-  _description: Vodka
+  _ingredientId: Poivre
+  _ingredientName: Poivre
+  Prefab: {fileID: 590284431653865481, guid: 5a410adb5011a8b4d902b85584b3466f, type: 3}
+  _ingredientTexture: {fileID: 8452703584861095095, guid: 59df50355fa75b444acd1e163900b6ee, type: 3}
+  _description: Poivre

@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
-  m_Name: Seringue
+  m_Name: Vodka
   m_EditorClassIdentifier: 
-  _ingredientId: Seringue
-  _ingredientName: Seringue
-  _ingredientTexture: {fileID: 3007544534967890242, guid: d73c6e3355046bf4fa613c6bf153cebb, type: 3}
-  _description: Seringue
+  _ingredientId: Vodka
+  _ingredientName: Vodka
+  Prefab: {fileID: 590284431653865481, guid: 55b398ea47691e045bd8e19422c8996e, type: 3}
+  _ingredientTexture: {fileID: -4561377285297849968, guid: 23cefcd3d8a24b748a425757a35890e2, type: 3}
+  _description: Vodka

@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
-  m_Name: Pomme
+  m_Name: Lemon
   m_EditorClassIdentifier: 
-  _ingredientId: Pomme
-  _ingredientName: Pomme
-  _ingredientTexture: {fileID: -3327064287969554200, guid: b54aa7cd0df60854b9668ba33911282a, type: 3}
-  _description: Pomme
+  _ingredientId: Lemon
+  _ingredientName: Lemon
+  Prefab: {fileID: 590284431653865481, guid: 7731b4b9d8c8bad45b0b4a07dc80ea02, type: 3}
+  _ingredientTexture: {fileID: -7245966700060494964, guid: 9c7eb929d7616be4387ff95d23c81d46, type: 3}
+  _description: Lemon

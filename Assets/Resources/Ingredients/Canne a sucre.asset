@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a686de0820271b24c8c0efa605a441a9, type: 3}
-  m_Name: Menthe
+  m_Name: Canne a sucre
   m_EditorClassIdentifier: 
-  _ingredientId: Menthe
-  _ingredientName: Menthe
-  _ingredientTexture: {fileID: 341826553180655283, guid: 2442efec7fc50f841a8f5460e6755e3d, type: 3}
-  _description: Menthe
+  _ingredientId: Canne a sucre
+  _ingredientName: Canne a sucre
+  Prefab: {fileID: 590284431653865481, guid: 377bee62fe9046c48abc2085dba7f4ab, type: 3}
+  _ingredientTexture: {fileID: 2964728875688461460, guid: 13eabf7d33154ae4eb25c048e0caa77f, type: 3}
+  _description: Canne a sucre
