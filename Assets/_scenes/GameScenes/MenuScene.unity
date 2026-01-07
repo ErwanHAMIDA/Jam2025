@@ -6255,33 +6255,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dev :
-
-    Lukas BEDEN
-
-    Erwan HAMIDA
-
-
-    Art :
-
-    Kenney
-
-
-    Music
-    :
-
-    Fez OST by Disasterpeace
-
-
-    Sounds :
-
-    RPG Maker
-
-    PIXABAY
-
-    DAOC
-
-    OpenGameArt'
+  m_text: "Dev :\nElia MAILLARD-SALIN\nEthan ODIET\nSofiane BOUHADI\nErwan HAMIDA\nAlexandre
+    GLATZ\n\nArt :\nVincent BILLAUD\nGabriel FRAN\xC7OIS"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7529,8 +7504,8 @@ RectTransform:
   - {fileID: 897040822}
   m_Father: {fileID: 1873191827}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5675, y: 0.6110236}
-  m_AnchorMax: {x: 0.8175, y: 0.6999325}
+  m_AnchorMin: {x: 0.5675, y: 0.5947495}
+  m_AnchorMax: {x: 0.8175, y: 0.6836584}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
